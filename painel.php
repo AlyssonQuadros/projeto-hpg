@@ -3,10 +3,6 @@
 
 include('verifica_login.php');
 
-// if(isset($_SESSION['usuario_id']) && (isset($_SESSION['usuario']))){
-//     echo "Bem vindo " .$_SESSION['usuario'] . "<br>";
-//     echo "<a href='logout.php'> Sair</a><br> ";
-// }
 ?>
 
 <!DOCTYPE html>

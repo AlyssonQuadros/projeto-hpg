@@ -49,22 +49,22 @@ session_start();
                         <form action="cadastro.php" method="POST">
                             <div class="field">
                                 <div class="control">
-                                    <input name="nome" type="text" class="input is-large" placeholder="Nome" autofocus>
+                                    <input name="nome" type="text" class="input is-large" required placeholder="Nome" autofocus>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input name="usuario" type="text" class="input is-large" placeholder="Usuário">
+                                    <input name="usuario" type="text" class="input is-large" required placeholder="Usuário">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input name="email" type="text" class="input is-large" placeholder="Email">
+                                    <input name="email" type="text" class="input is-large" required placeholder="Email">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input name="senha" class="input is-large" type="password" placeholder="Senha">
+                                    <input name="senha" class="input is-large" type="password" required placeholder="Senha">
                                 </div>
                             </div>
                             <div class="field" style="margin-top: 20px;">

@@ -131,7 +131,7 @@
                         if(Number(info[1])!=0 && Number(info[2])!=0) {
                             const hidrante_info = new google.maps.InfoWindow({
                                     content:
-                                        '<img src="' + info[11] + '"/>' +
+                                        '<img style="width:300px; height: 400px;" src="' + info[11] + '"/>' +
                                         '<h1 id="firstHeading" class="firstHeading" style="font-size:20px"><b>' + info[3] + '</b></h1><div><b>Endereço: </b>' + info[4] + '</div><div><b>Estado: </b>' + info[5] + '</div><div><b>Tipo: </b>' + info[6] + '</div><div><b>Vazão: </b>' + info[7] + '</div><div><b>Pressão: </b>' + info[8] + '</div><div><b>Condição: </b>' + info[9] + '</div><div><b>Acesso: </b>' + info[10] + '</div>',
                                 }),
                                 hidrante = new google.maps.Marker({

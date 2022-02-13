@@ -1,7 +1,8 @@
 <?php
 session_start();
+include("conexao.php");
 
-$conexao = mysqli_connect("127.0.0.1", "root", "", "bombeirospg") or die("Não foi possível conectar".mysqli_connect_error());
+// $conexao = mysqli_connect("127.0.0.1", "root", "", "bombeirospg") or die("Não foi possível conectar".mysqli_connect_error());
 $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
 $usuario = mysqli_real_escape_string($conexao, trim($_POST['usuario']));
 $email = mysqli_real_escape_string($conexao, trim($_POST['email']));

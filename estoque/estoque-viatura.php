@@ -25,7 +25,7 @@
                 <a href="../estoque/estoque-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
                 <a href="../estoque/estoque-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
                 <a href="../estoque/estoque-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-                <a href="../painel.php"><button type="button" class="btn btn-warning">Voltar</button></a>
+                <a href="../home.php"><button type="button" class="btn btn-warning">Voltar</button></a>
             </div>
         </div>
         <hr style="color: #ff6600;">

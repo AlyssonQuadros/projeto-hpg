@@ -10,14 +10,20 @@ $lat = $_POST['lat'];
 $lng = $_POST['lng'];
 $imagem = $_POST['imagem'];
 
-$sql = "INSERT INTO viaturas (placa, modelo, ano, marca, lat, lng, imagem)
-        VALUES ('$placa', '$modelo', '$ano', '$marca', '$lat', '$lng', '$imagem')";
+$sql = "INSERT INTO viaturas (placa, modelo, ano, marca, lat, lng, imagem) VALUES ('$placa', '$modelo', '$ano', '$marca', '$lat', '$lng', '$imagem')";
+
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;
 }
 
-if(empty($_POST['placa']) || empty($_POST['modelo']) || empty($_POST['ano']) || empty($_POST['marca']) || empty($_POST['lat']) || empty($_POST['lng']) || empty($_POST['imagem'])){
+if(empty($_POST['placa']) 
+	|| empty($_POST['modelo']) 
+	|| empty($_POST['ano']) 
+	|| empty($_POST['marca']) 
+	|| empty($_POST['lat']) 
+	|| empty($_POST['lng']) 
+	|| empty($_POST['imagem'])){
 	$_SESSION['erro'] = true;
 }
 

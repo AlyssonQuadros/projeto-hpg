@@ -47,8 +47,12 @@ session_start();
                 <select class="col-lg-2" style="font-size: 15px;" type="text"  name="condicao" required id="condicao">
                     <option value="">Selecione uma opção...</option>
                     <option value="Boa" icon="/img/fire-hydrant-vermelho.png">Boa</option>
-                    <option value="Regular" icon="/img/fire-hydrant-laranja.png">Regular</option>
-                    <option value="Ruim" icon="/img/fire-hydrant-amarelo.png">Ruim</option>
+                    <option value="Seco" icon="/img/fire-hydrant-laranja.png">Seco</option>
+                    <option value="Emperrado" icon="/img/fire-hydrant-vermelho.png">Emperrado</option>
+                    <option value="Espanado" icon="/img/fire-hydrant-laranja.png">Espanado</option>
+                    <option value="Enterrado" icon="/img/fire-hydrant-amarelo.png">Enterrado</option>
+                    <option value="Registro Profundo" icon="/img/fire-hydrant-vermelho.png">Registro Profundo</option>
+                    <option value="Desconhecido" icon="/img/fire-hydrant-laranja.png">Desconhecido</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Tipo</span>
@@ -56,8 +60,7 @@ session_start();
                 <select class="col-lg-2" style="font-size: 15px;" type="text"  name="tipo" id="tipo">
                     <option value="">Selecione uma opção...</option>
                     <option value="Subterrâneo">Subterrâneo</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
+                    <option value="Coluna">Coluna</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Vazão</span>
@@ -86,7 +89,8 @@ session_start();
                 <select class="col-lg-2" style="font-size: 15px;" type="text"  name="estado" id="estado">
                     <option value="">Selecione uma opção...</option>
                     <option value="Ativo">Ativo</option>
-                    <option value="Inativo">Inativo</option>
+                    <option value="Inativo">Inoperante</option>
+                    <option value="Manutenção">Manutenção</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Acesso</span>
@@ -95,7 +99,7 @@ session_start();
                     <option value="">Selecione uma opção...</option>
                     <option value="Fácil">Fácil</option>
                     <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
+                    <option value="Difícil">Difícil</option>
                 </select>
             </div>
             <!-- DIV PROS INPUTS: Latitude/Longitude -->
@@ -136,7 +140,7 @@ session_start();
             <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
             <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
             <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-            <a href="/painel.php"><button type="button" class="btn btn-warning">Voltar</button></a>
+            <a href="/home.php"><button type="button" class="btn btn-warning">Voltar</button></a>
         </div>
     </div>
 </div>

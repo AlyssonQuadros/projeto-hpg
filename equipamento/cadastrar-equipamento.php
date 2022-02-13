@@ -15,7 +15,7 @@ session_start();
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <script src="js/app.js"></script>
-  </head>
+    </head>
 
 <div class="x_panel">
     <div class="container-fluid pt-3 text-white text-center">
@@ -81,7 +81,7 @@ session_start();
             <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
             <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
             <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-            <a href="/painel.php"><button type="button" class="btn btn-warning">Voltar</button></a>
+            <a href="/home.php"><button type="button" class="btn btn-warning">Voltar</button></a>
         </div>
     </div>
 </div>

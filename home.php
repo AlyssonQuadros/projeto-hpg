@@ -21,7 +21,7 @@ include('verifica_login.php');
 
 <header style="padding: 5px; color: #000000;">
         <h2 style="font-weight: bold; text-align:right">Logado como <?php echo $_SESSION['usuario'];?></h2>
-        <h2 style="font-weight: bold; text-align:right"><a href="logout.php">(Sair)</a></h2>
+        <h2 style="font-weight: bold; text-align:right"><a href="perfil.php">Editar perfil </a> - <a href="logout.php">(Sair)</a></h2>
 </header>
 <body class="body_um" style="background-image: url('../img/2_GB.png');">
     <div class="frame_um">
@@ -31,9 +31,9 @@ include('verifica_login.php');
                     <a href="/mapa/mapa-hidrantes.php"><button class="botao">Mapa de hidrantes</button></a>
                 </div>
 
-                <div>
+                <!-- <div>
                     <a href="/tracking.php"><button class="botao">Rastrear viaturas</button></a>
-                </div>
+                </div> -->
 
                 <div>
                     <a href="/equipamento/cadastrar-equipamento.php"><button class="botao">Adicionar ao estoque</button></a>

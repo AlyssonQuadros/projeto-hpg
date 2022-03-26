@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <script src="js/app.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/19778fe837.js" crossorigin="anonymous"></script>
     </head>
 <?php
     $conexao = new mysqli('localhost', 'root', '', 'bombeirospg');
@@ -25,12 +26,20 @@
                 <a href="../estoque/estoque-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
                 <a href="../estoque/estoque-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
                 <a href="../estoque/estoque-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-                <a href="../home.php"><button type="button" class="btn btn-warning">Voltar</button></a>
+                <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
             </div>
         </div>
         <hr style="color: #ff6600;">
 
-        <h4 style="margin-top: 10px; margin-left: 20px; margin-top: 20px">Viaturas no estoque</h4>
+        <div class="row">
+            <div class="col-3">
+                <h4 style="margin-top: 10px; margin-left: 20px;">Viaturas no estoque:</h4>
+            </div>
+            <div style="padding-left: 37px;" class="col-md-3 offset-md-6">
+                <a href="../estoque/estoque-viatura.php"><button type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-download"></i> Exportar dados</button></a>
+                <a href="../estoque/estoque-equipamento.php"><button type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-box-open"></i> Retirar do estoque</button></a>
+            </div>
+        </div>
 
         <div class="container-fluid mt-3" style="padding-bottom: 50px;">
             <table id="tabelaViatura" class="table table-hover table-bordered" style="border-color: #444444; margin-top:20px; margin-bottom:40px; color:#000000;" border="2">
@@ -52,13 +61,9 @@
                         <td style="font-size:12px; background-color:#fff"><?php echo $dado["ano"]; ?></td>
                         <td class="text-center" style="font-size:12px; background-color:#fff">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-info btn-xs" aria-haspopup="true" aria-expanded="false">
-                                    Editar <span class="caret"></span>
+                                <button type="button" style="color:#F5F5F8" class="btn-xs btn-primary">
+                                    <i class="fa-solid fa-pen-to-square"></i> Editar
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="btn-mover-instituicao" status-id="0" data-id="<?=$d['idCliente']?>" instituicao-id="<?= $d['idInstituicao'] ?>">Inativo</a></li>
-                                    <li><a class="btn-mover-instituicao" status-id="1" data-id="<?=$d['idCliente']?>" instituicao-id="<?= $d['idInstituicao'] ?>">Ativo</a></li>
-                                </ul>
                             </div>
                         </td>
                     </tr>

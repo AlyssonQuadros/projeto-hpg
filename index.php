@@ -35,19 +35,26 @@ session_start();
                     unset($_SESSION['nao_autenticado']);
                     ?>
                     <div class="box">
-                        <form action="login.php" method="POST">
+                        <form action="/usuario/login.php" method="POST">
                             <div class="field">
-                                <label class="label-input" for="">
+                                <label class="label-input">
                                     <i class="far fa-envelope icon-modify"></i>
-                                    <input name="usuario" name="text" class="input is-large" placeholder="Seu suário" autofocus="">
+                                    <input name="usuario" name="text" class="input is-large" required placeholder="Seu suário" autofocus="">
                                 </label>
                             </div>
 
                             <div class="field">
-                                <label class="label-input" for="">
-                                    <i class="fas fa-lock icon-modify"></i>
-                                    <input name="senha" class="input is-large" type="password" placeholder="Sua senha">
-                                </label>
+                                <div class="control">
+                                    <label class="label-input">
+                                        <i class="fas fa-lock icon-modify"></i>
+                                        <input name="senha" class="input is-large" id="InputPassword" type="password" required placeholder="Sua senha">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input style="margin-left: 33px;" type="checkbox" onclick="verSenha()"> Mostrar senha
+                                </div>
                             </div>
 
                             <div style="padding-bottom: 20px;">
@@ -60,5 +67,18 @@ session_start();
         </div>
     </section>
 </body>
+
+<script>
+
+function verSenha() {
+    var senha = document.getElementById("InputPassword");
+    if (senha.type === "password") {
+        senha.type = "text";
+    } else {
+        senha.type = "password";
+    }
+}
+
+</script>
 
 </html>

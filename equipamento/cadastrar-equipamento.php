@@ -15,6 +15,7 @@ session_start();
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <script src="js/app.js"></script>
+        <script src="https://kit.fontawesome.com/19778fe837.js" crossorigin="anonymous"></script>
     </head>
 
 <div class="x_panel">
@@ -28,7 +29,7 @@ session_start();
                     <span style="font-size: 15px;" class="input-group-text" id="basic-addon1">Nº Patrimônio*</span>
                 </div>
                 <div class="col-lg-3">
-                    <input style="font-size: 15px;" type="text" class="form-control" id="patrimonio" name="patrimonio" required placeholder="Número do patrimônio">
+                    <input style="font-size: 15px;" type="number" class="form-control" id="patrimonio" name="patrimonio" required placeholder="Número do patrimônio">
                 </div>
             </div>
             <!-- DIV PROS INPUTS/SELECT: Nome / Condicao -->
@@ -61,10 +62,18 @@ session_start();
             <!-- INPUT DE IMAGEM -->
             <div class="container-sm input-group mb-3" style="margin-top: 30px;">
                 <div class="col-lg-8">
-                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
+                    <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
-            </div><br>
-            <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Adicionar</button>
+            </div>
+            <?php
+                if(isset($_SESSION['erro_upload'])):
+                ?>
+                    <p style="color:#000000; font-size: 13px">Por favor, envie arquivos com as seguintes extensões: jpg, jpeg ou png</p>
+                <?php
+                endif;
+                unset($_SESSION['erro_upload']);
+            ?>
+            <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
             <?php
                 if(isset($_SESSION['status_cadastro'])):
@@ -81,7 +90,7 @@ session_start();
             <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
             <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
             <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-            <a href="/home.php"><button type="button" class="btn btn-warning">Voltar</button></a>
+            <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
         </div>
     </div>
 </div>
@@ -99,7 +108,7 @@ session_start();
                     <th class="th-sm" style="width: 12%; font-size:13px; color: #000000; background-color:#ff8533"><b>Nº Patrimônio</b></th>
                     <th class="th-sm" style="font-size:13px; color: #000000; background-color:#ff8533"><b>Nome</b></th>
                     <th class="th-sm" style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Condição</b></th>
-                    <th class="th-sm" style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Data</b></th>
+                    <th class="th-sm" style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Adicionado</b></th>
                     <!-- <td style="font-s3ze: color: #000000;16px; background-color:#ff8533"><b>Status</b></td> -->
                 </tr>
             </thead>

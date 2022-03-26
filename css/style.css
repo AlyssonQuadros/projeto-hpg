@@ -52,9 +52,18 @@ p {
     justify-content: center;
     align-items: center;
 } */
+
+.fa, .fas{
+    font-weight: 900;
+}
+
+.fa, .far, .fas{
+    font-family: "Raleway";
+}
+
 .frame_um{
     margin-left: 500px;
-    margin-top: 70px;
+    margin-top: 40px;
     width: 380px;
     height: 380px;
     background-color: #eb3131f5;
@@ -255,19 +264,12 @@ footer p{
 }
 
 .botao-tres {
-    align-items: center;
     border-radius: 50px;
     text-transform: uppercase;
-    text-align: center;
     color: #fff;
-    font-size: 10px;
-    padding: 12px 50px;
-    cursor: pointer;
     font-weight: bold;
-    width: 190px;
+    width: 130px;
     height: 45px;
-    align-self: center;
-    border: none;
     background-color: #ff9900f5;
     border: 1px solid #ff9900f5;
     transition: background-color .5s;
@@ -278,18 +280,18 @@ footer p{
     border: 1px solid #ffffff;
     color: #ffffff;
 }
-/* FLASH MSG */
-.msg{
-    font-weight: bold;
-    background-color: #ade796e0;
-    color: #035300;
-    border: 1px solid #046d00;
-    width: 100%;
-    margin-bottom: 2;
-    text-align: center;
-    padding: 10px;
+
+#btn-addEstoque{
+    background-color: #22BF64;
+    border: 1px solid #22BF64;
 }
 
+#btnExportar{
+    background-color: #ffffff;
+    border: 1px solid green;
+    color: green;
+}
+/* FLASH MSG */
 
 .account{
     color: #000000;

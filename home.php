@@ -1,8 +1,7 @@
 <?php
-// session_start();
+session_start();
 
-include('verifica_login.php');
-
+require_once('conexao.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,20 +14,20 @@ include('verifica_login.php');
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/412/412858.png">
         <link rel="stylesheet" href="css/bulma.min.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/19778fe837.js" crossorigin="anonymous"></script>
     </head>
 
 <header style="padding: 5px; color: #000000;">
-        <h2 style="font-weight: bold; text-align:right">Logado como <?php echo $_SESSION['usuario'];?></h2>
-        <h2 style="font-weight: bold; text-align:right"><a href="perfil.php">Editar perfil </a> - <a href="logout.php">(Sair)</a></h2>
+        <h2 style="text-align:right">Logado como <b><?php echo $_SESSION['usuario'];?> - <a href="/usuario/logout.php">(Sair)</a></b></h2>
+        <h2 style="font-weight: bold; text-align:right"><a href="<?php echo "/usuario/editar-perfil.php?id=".$_SESSION['usuario']?>"><i class="fa-solid fa-user"></i> Editar perfil</a></h2>
 </header>
 <body class="body_um" style="background-image: url('../img/2_GB.png');">
+<h3 class="title-primary" style="font-size: 55px; margin-left: 510px;">Hidrantes PG</h3>
     <div class="frame_um">
         <h2 class="title_um"><b>Menu</b></h2>
             <div class="menu">
                 <div>
-                    <a href="/mapa/mapa-hidrantes.php"><button class="botao">Mapa de hidrantes</button></a>
+                    <a href="/mapa/mapa-hidrantes.php"><button class="botao">Mapa <i class="fa-solid fa-map-location-dot"></i></button></a>
                 </div>
 
                 <!-- <div>
@@ -36,15 +35,15 @@ include('verifica_login.php');
                 </div> -->
 
                 <div>
-                    <a href="/equipamento/cadastrar-equipamento.php"><button class="botao">Adicionar ao estoque</button></a>
+                    <a href="/equipamento/cadastrar-equipamento.php"><button class="botao">Adicionar ao estoque <i class="fas fa-save"></i></button></a>
                 </div>
 
                 <div>
-                    <a href="/estoque/estoque-equipamento.php"><button class="botao">Estoque</button></a> <br/>
+                    <a href="/estoque/estoque-equipamento.php"><button class="botao">Estoque <i class="fa-solid fa-box"></i></button></a> <br/>
                 </div>
             </div>
-        <div id="cadastro">
-            <a href="cadastro.php" style="color: white;">Cadastrar</a>
+        <div id="cadastro" style="margin-top: 10px;">
+            <a href="/usuario/cadastro.php" style="color: white;"><b>Cadastrar usuário</b> <i class="fa-solid fa-user"></i></a>
         </div>
         <div class="social-media">
             <ul class="list-social-media">

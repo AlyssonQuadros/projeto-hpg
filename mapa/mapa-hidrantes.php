@@ -123,6 +123,16 @@
                     ?>;
                 max_id_hidrante += 1;
                 console.log(max_id_hidrante);
+                function CorHidrante(pressao,estado) {
+                    if (estado == 'manutencao'){
+                        return '../img/fire-hydrant-roxo.png';
+                    } else if (pressao == 'Boa'){
+                        return '../img/fire-hydrant-verde.png';
+                    } else if (pressao == 'Regular'){
+                        return '../img/fire-hydrant-amarelo.png';
+                    } else {
+                        return '../img/fire-hydrant-vermelho.png';}
+                }
                 for(var id_h = 0;id_h<max_id_hidrante;id_h++) {
                     const oReq2 = new XMLHttpRequest();
                     oReq2.onload = function () {
@@ -139,7 +149,7 @@
                                     map: e,
                                     title: info[3],
                                     optimized: true,
-                                    icon: '../img/fire-hydrant-vermelho.png'
+                                    icon: CorHidrante(info[8],info[5])
                                     //draggable:true,
                                     //animation: google.maps.Animation.DROP //
                                 });

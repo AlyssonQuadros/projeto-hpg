@@ -14,9 +14,9 @@ session_start();
         <link rel="stylesheet" href="../css/bulma.min.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/19778fe837.js" crossorigin="anonymous"></script>
     </head>
 
 <div class="x_panel">
@@ -90,7 +90,7 @@ session_start();
                     <option value="">Selecione uma opção...</option>
                     <option value="Ativo">Ativo</option>
                     <option value="Inativo">Inoperante</option>
-                    <option value="Manutenção">Manutenção</option>
+                    <option value="manutencao">Manutenção</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Acesso</span>
@@ -108,13 +108,13 @@ session_start();
                     <span style="font-size: 15px;" class="input-group-text">Latitude*</span>
                 </div>
                 <div class="col-lg-4">
-                    <input style="font-size: 15px;" maxlength="30" type="text" class="form-control" id="lat" name="lat" required placeholder="(Ex: -25.099885179921507)">
+                    <input style="font-size: 15px;" type="float" class="form-control" id="lat" name="lat" required placeholder="(Ex: -25.099885179921507)">
                 </div>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Longitude*</span>
                 </div>
                 <div class="col-lg-4">
-                    <input style="font-size: 15px;" maxlength="30" type="text" class="form-control" id="lng" name="lng" required placeholder="(Ex: -50.158647345674446)">
+                    <input style="font-size: 15px;" type="float" class="form-control" id="lng" name="lng" required placeholder="(Ex: -50.158647345674446)">
                 </div>
             </div>
             <!-- DIV PARA INPUT DE IMAGEM testeteste -->
@@ -123,7 +123,7 @@ session_start();
                     <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div><br>
-            <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Adicionar</button>
+            <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
             <?php
                 if(isset($_SESSION['status_cadastro'])):
@@ -140,7 +140,7 @@ session_start();
             <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
             <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
             <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-            <a href="/home.php"><button type="button" class="btn btn-warning">Voltar</button></a>
+            <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
         </div>
     </div>
 </div>
@@ -161,6 +161,7 @@ session_start();
                         <th style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Pressão</b></th>
                         <th style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Status</b></th>
                         <th style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Condição</b></th>
+                        <th class="th-sm" style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Adicionado</b></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -172,6 +173,7 @@ session_start();
                         <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["pressao"]; ?></td>
                         <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["estado"]; ?></td>
                         <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["condicao"]; ?></td>
+                        <td style="font-size:12px;"><?php echo date("d/m/Y", strtotime($dado["created_at"])); ?></td>
                     </tr>
                     <?php } ?>
                 </tbody>

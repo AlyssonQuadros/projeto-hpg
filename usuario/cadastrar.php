@@ -2,9 +2,6 @@
 session_start();
 include("../conexao.php");
 
-// $conexao = mysqli_connect("127.0.0.1", "root", "", "bombeirospg") or die("Não foi possível conectar".mysqli_connect_error());
-
-// ADICIONEI NOVAS COLUNAS NA TABELA 'USUARIO' => TELEFONE E FUNCAO
 $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
 $usuario = mysqli_real_escape_string($conexao, trim($_POST['usuario']));
 $telefone = mysqli_real_escape_string($conexao, trim($_POST['telefone']));

@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if(!$_SESSION['usuario']) {
+    header('Location: ../index.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +56,11 @@ session_start();
                 <div class="col-lg-6">
                     <input style="font-size: 15px;" maxlength="50" type="text" class="form-control" id="modelo" name="modelo" required placeholder="Modelo do veículo">
                 </div>
+                <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
+                    <option value="Em estoque" selected>Em estoque</option>
+                    <option value="Em uso">Em uso</option>
+                    <option value="Em manutenção">Em manutencao</option>
+                </select>
             </div>
             <!-- DIV PROS INPUTS: Latitude / Longitude -->
             <!-- <div class="container-sm input-group mb-3">
@@ -70,37 +80,20 @@ session_start();
             <!-- DIV PARA INPUT DE IMAGEM -->
             <div class="container-sm input-group mb-3" style="margin-top: 30px;">
                 <div class="col-lg-5">
-                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
+                    <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
-            </div><br>
+            </div>
+            <?php
+                if(isset($_SESSION['erro_upload'])):
+                ?>
+                    <p style="color:#000000; font-size: 13px">Por favor, envie arquivos com as seguintes extensões: jpg, jpeg ou png</p>
+                <?php
+                endif;
+                unset($_SESSION['erro_upload']);
+            ?>
             <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
             <?php
-            // if(isset($_POST['placa']))
-            // {
-            //     if($_FILES['imagem']['type'] == 'image/png'){
-
-            //         $nome_arquivo = md5($_FILES['imagem']['name'].rand(1,999)).'.png';
-            //         if (isset($_FILES['imagem']))
-            //         {
-            //             move_uploaded_file($_FILES['imagem']['tmp_name'], 'imagens-viaturas/' .$nome_arquivo);
-
-            //             // echo 'Imagem enviada com sucesso!';
-            //         }
-
-            //     }elseif($_FILES['imagem']['type'] == 'image/jpeg'){
-            //         $nome_arquivo = md5($_FILES['imagem']['name'].rand(1,999)).'.jpg';
-            //         if (isset($_FILES['imagem']))
-            //         {
-            //             move_uploaded_file($_FILES['imagem']['tmp_name'], 'imagens-viaturas/' .$nome_arquivo);
-
-            //             // echo 'Imagem enviada com sucesso!';
-            //         }
-            //     }else{
-            //         echo "Só é possivel enviar arquivos PNG e JPEG/JPG";
-            //     }
-            // }
-
                 if(isset($_SESSION['status_cadastro'])):
                 ?>
                 <div class="notification is-success" style="width: 290px; height: 80px; margin-left: 500px; margin-top: 20px;">

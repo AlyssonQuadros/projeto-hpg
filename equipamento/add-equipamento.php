@@ -19,16 +19,16 @@ $_UP['extensoes'] = array('jpg', 'png', 'jpeg');
 $_UP['renomeia'] = false;
 
 // Array com os tipos de erros de upload do PHP
-$_UP['erros'][0] = 'Não houve erro';
-$_UP['erros'][1] = 'O imagem no upload é maior do que o limite do PHP';
-$_UP['erros'][2] = 'O imagem ultrapassa o limite de tamanho especifiado no HTML';
-$_UP['erros'][3] = 'O upload do imagem foi feito parcialmente';
-$_UP['erros'][4] = 'Não foi feito o upload do imagem';
-  // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
-  if ($_FILES['imagem']['error'] != 0) {
-    die("Não foi possível fazer o upload, erro:<br />" . $_UP['erros'][$_FILES['imagem']['error']]);
-    exit; // Para a execução do script
-  }
+// $_UP['erros'][0] = 'Não houve erro';
+// $_UP['erros'][1] = 'O imagem no upload é maior do que o limite do PHP';
+// $_UP['erros'][2] = 'O imagem ultrapassa o limite de tamanho especifiado no HTML';
+// $_UP['erros'][3] = 'O upload do imagem foi feito parcialmente';
+// $_UP['erros'][4] = 'Não foi feito o upload do imagem';
+//   // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
+//   if ($_FILES['imagem']['error'] != 0) {
+//     die("Não foi possível fazer o upload, erro:<br />" . $_UP['erros'][$_FILES['imagem']['error']]);
+//     exit; // Para a execução do script
+//   }
 
 // Faz a verificação da extensão do imagem
   $extensao = strtolower(end(explode('.', $_FILES['imagem']['name'])));
@@ -63,10 +63,11 @@ $patrimonio = $_POST['patrimonio'];
 $nome = $_POST['nome'];
 $descricao = $_POST['descricao'];
 $condicao = $_POST['condicao'];
-$imagem = $_FILES['imagem'];
+$situacao = $_POST['situacao'];
+$imagem = $_FILES['imagem']['name'];
 
-$sql = "INSERT INTO equipamentos (patrimonio, nome, descricao, condicao, imagem, created_at)
-        VALUES ('$patrimonio', '$nome', '$descricao', '$condicao', '$novo_nome', NOW())";
+$sql = "INSERT INTO equipamentos (patrimonio, nome, descricao, condicao, situacao, imagem, created_at)
+        VALUES ('$patrimonio', '$nome', '$descricao', '$condicao', '$situacao', '$imagem', NOW())";
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;

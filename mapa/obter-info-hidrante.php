@@ -12,7 +12,7 @@
         $row3 = mysqli_fetch_assoc($res3);
         $res4 = mysqli_query($mysqli, "SELECT `endereco` AS _msg FROM `hidrantes` WHERE `id_hidrantes` = $id");
         $row4 = mysqli_fetch_assoc($res4);
-        $res5 = mysqli_query($mysqli, "SELECT `estado` AS _msg FROM `hidrantes` WHERE `id_hidrantes` = $id");
+        $res5 = mysqli_query($mysqli, "SELECT `situacao` AS _msg FROM `hidrantes` WHERE `id_hidrantes` = $id");
         $row5 = mysqli_fetch_assoc($res5);
         $res6 = mysqli_query($mysqli, "SELECT `tipo` AS _msg FROM `hidrantes` WHERE `id_hidrantes` = $id");
         $row6 = mysqli_fetch_assoc($res6);
@@ -31,13 +31,13 @@
         $lng = 0.0 + $row2['_msg'];
         $nome = $row3['_msg'];
         $endereco = $row4['_msg'];
-        $estado = $row5['_msg'];
+        $situacao = $row5['_msg'];
         $tipo = $row6['_msg'];
         $vazao = $row7['_msg'];
         $pressao = $row8['_msg'];
         $condicao = $row9['_msg'];
         $acesso = $row10['_msg'];
         $imagem = $row11['_msg'];
-        $output = "0,$lat,$lng,$nome,$endereco,$estado,$tipo,$vazao,$pressao,$condicao,$acesso,$imagem,0";
+        $output = "0;$lat;$lng;$nome;$endereco;$situacao;$tipo;$vazao;$pressao;$condicao;$acesso;$imagem;0";
         echo json_encode($output);
 ?>

@@ -17,6 +17,6 @@
         $lng = 0.0 + $row2['_msg'];
         $placa = $row3['_msg'];
         $imagem = $row4['_msg'];
-        $output = "0,$lat,$lng,$placa,$imagem,0";
+        $output = "0;$lat;$lng;$placa;$imagem;0";
         echo json_encode($output);
 ?>

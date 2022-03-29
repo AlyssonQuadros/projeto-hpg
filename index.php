@@ -38,11 +38,10 @@ session_start();
                         <form action="/usuario/login.php" method="POST">
                             <div class="field">
                                 <label class="label-input">
-                                    <i class="far fa-envelope icon-modify"></i>
-                                    <input name="usuario" name="text" class="input is-large" required placeholder="Seu suário" autofocus="">
+                                    <i class="far fa-user icon-modify"></i>
+                                    <input name="usuario" name="text" class="input is-large" required placeholder="Seu usuário" autofocus="">
                                 </label>
                             </div>
-
                             <div class="field">
                                 <div class="control">
                                     <label class="label-input">
@@ -56,9 +55,11 @@ session_start();
                                     <input style="margin-left: 33px;" type="checkbox" onclick="verSenha()"> Mostrar senha
                                 </div>
                             </div>
-
                             <div style="padding-bottom: 20px;">
                                 <button type="submit" class="botao-um">Entrar</button>
+                            </div>
+                            <div>
+                                <a href="/usuario/esqueci-minha-senha.php" style="font-size:14px">Esqueci minha senha</a>
                             </div>
                         </form>
                     </div>

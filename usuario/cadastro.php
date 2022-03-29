@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if(!$_SESSION['usuario']) {
+    header('Location: ../index.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -93,18 +98,6 @@ session_start();
 </body>
 
 <script>
-
-function onlynumber(evt) {
-            var theEvent = evt || window.event;
-            var key = theEvent.keyCode || theEvent.which;
-            key = String.fromCharCode( key );
-            //var regex = /^[0-9.,]+$/;
-            var regex = /^[0-9.]+$/;
-            if( !regex.test(key) ) {
-                theEvent.returnValue = false;
-                if(theEvent.preventDefault) theEvent.preventDefault();
-            }
-        }
 
 // 42988288611
 document.getElementById('telefone').addEventListener('input', function (e) {

@@ -13,7 +13,7 @@ html,body {
     margin: 0;
 }
 .hero.is-success {
-    background: url("../img/2_GB.png");
+    background: url("../mapa/imagens/2_GB.png");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;

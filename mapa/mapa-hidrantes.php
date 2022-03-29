@@ -241,7 +241,7 @@
                     const lat = latlngCadastro[0].split("(");
                     const lng = latlngCadastro[1].split(")");
                     hidrante_cadastro.setContent('<h1 id="firstHeading" class="firstHeading" style="font-size:20px"><b>Cadastrar um novo hidrante?</b></h1>' +
-                                    '<form action="../hidrante/add-hidrante.php" method="POST">'+
+                                    '<form action="../hidrante/add-hidrante.php" method="POST" enctype="multipart/form-data">'+
                                         '<div class="container-sm input-group mb-3" style="padding-bottom:5px; padding-top:5px">'+
                                             '<div class="col-lg-3.1">'+
                                                 '<span style="font-size: 15px;" class="input-group-text"><b>Siglaﾠﾠﾠﾠﾠ <b></span>'+
@@ -326,7 +326,7 @@
                                         '<div class="container-sm input-group mb-3" style="padding-bottom:5px; padding-top:5px">'+
                                             '<div class="col-lg-3.1">'+
                                                 '<span style="font-size: 15px;" class="input-group-text">Imagemﾠﾠ </span>'+
-                                                '<input style="font-size: 15px;" type="file" maxlength="30" type="text" class="form-control" id="imagem" name="imagem" placeholder="imagem">'+
+                                                '<input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">'+
                                             '</div>'+
                                         '</div><br>'+
                                         '<input style="font-size: 12px;" type="submit" class="botao-tres" value="Adicionar">'+

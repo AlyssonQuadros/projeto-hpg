@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!$_SESSION['usuario']) {
+	header('Location: ../index.php');
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +33,7 @@ session_start();
                     <span style="font-size: 15px;" class="input-group-text" id="basic-addon1">Nº Patrimônio*</span>
                 </div>
                 <div class="col-lg-3">
-                    <input style="font-size: 15px;" type="number" class="form-control" id="patrimonio" name="patrimonio" required placeholder="Número do patrimônio">
+                    <input style="font-size: 15px;" type="text" class="form-control" id="patrimonio" name="patrimonio" onkeypress="return onlynumber();" required placeholder="Número do patrimônio">
                 </div>
             </div>
             <!-- DIV PROS INPUTS/SELECT: Nome / Condicao -->
@@ -48,6 +52,11 @@ session_start();
                     <option value="Boa">Boa</option>
                     <option value="Regular">Regular</option>
                     <option value="Ruim">Ruim</option>
+                </select>
+                <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
+                    <option value="Em estoque" selected>Em estoque</option>
+                    <option value="Em uso">Em uso</option>
+                    <option value="Em manutenção">Em manutencao</option>
                 </select>
             </div>
             <!-- DIV PRA DESCRICAO -->
@@ -108,6 +117,7 @@ session_start();
                     <th class="th-sm" style="width: 12%; font-size:13px; color: #000000; background-color:#ff8533"><b>Nº Patrimônio</b></th>
                     <th class="th-sm" style="font-size:13px; color: #000000; background-color:#ff8533"><b>Nome</b></th>
                     <th class="th-sm" style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Condição</b></th>
+                    <th class="th-sm" style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Situação</b></th>
                     <th class="th-sm" style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Adicionado</b></th>
                     <!-- <td style="font-s3ze: color: #000000;16px; background-color:#ff8533"><b>Status</b></td> -->
                 </tr>
@@ -118,8 +128,8 @@ session_start();
                     <td style="font-size:12px;"><?php echo $dado["patrimonio"]; ?></td>
                     <td style="font-size:12px; text-transform:capitalize;"><?php echo $dado["nome"]; ?></td>
                     <td style="font-size:12px; text-transform:capitalize;"><?php echo $dado["condicao"]; ?></td>
+                    <td style="font-size:12px; text-transform:capitalize;"><?php echo $dado["situacao"]; ?></td>
                     <td style="font-size:12px;"><?php echo date("d/m/Y", strtotime($dado["created_at"])); ?></td>
-                    <!-- <td style="font-size:14px; text-transform:capitalize;"><?php echo $dado["status"]; ?></td> -->
                 </tr>
                 <?php } ?>
             </tbody>
@@ -134,6 +144,18 @@ session_start();
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
 
     <script>
+
+    function onlynumber(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode( key );
+        //var regex = /^[0-9.,]+$/;
+        var regex = /^[0-9.]+$/;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {

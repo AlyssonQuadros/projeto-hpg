@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if(!$_SESSION['usuario']) {
+    header('Location: ../index.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +29,7 @@ session_start();
     <div class="container-fluid pt-3 text-white text-center">
         <h1 class="titulo-cadastro">Adicione um hidrante ao estoque:</h1>
         <h7 style="color:grey; font-size:15px"><i class="fas fa-info-circle"></i> Campos com * são obrigatórios</h7>
-        <form action="add-hidrante.php" method="POST">
+        <form action="add-hidrante.php" method="POST" enctype="multipart/form-data">
             <!-- DIV PROS DOIS INPUTS: Sigla / Endereço -->
             <div class="container-sm input-group mb-3" style="margin-top: 20px;">
                 <div class="col-lg-1">
@@ -39,20 +45,20 @@ session_start();
                     <input style="font-size: 15px;" maxlength="100" type="text" class="form-control" id="endereco" name="endereco" required placeholder="Rua onde está localizado o hidrante">
                 </div>
             </div>
-            <!-- DIV PROS SELECTS: Estado/Tipo/Vazão -->
+            <!-- DIV PROS SELECTS: situacao/Tipo/Vazão -->
             <div class="container-sm input-group mb-3">
                 <div class="col-lg-1">
                     <span style="font-size: 15px;" class="input-group-text">Condição*</span>
                 </div>
                 <select class="col-lg-2" style="font-size: 15px;" type="text"  name="condicao" required id="condicao">
                     <option value="">Selecione uma opção...</option>
-                    <option value="Boa" icon="/img/fire-hydrant-vermelho.png">Boa</option>
-                    <option value="Seco" icon="/img/fire-hydrant-laranja.png">Seco</option>
-                    <option value="Emperrado" icon="/img/fire-hydrant-vermelho.png">Emperrado</option>
-                    <option value="Espanado" icon="/img/fire-hydrant-laranja.png">Espanado</option>
-                    <option value="Enterrado" icon="/img/fire-hydrant-amarelo.png">Enterrado</option>
-                    <option value="Registro Profundo" icon="/img/fire-hydrant-vermelho.png">Registro Profundo</option>
-                    <option value="Desconhecido" icon="/img/fire-hydrant-laranja.png">Desconhecido</option>
+                    <option value="Boa">Boa</option>
+                    <option value="Seco">Seco</option>
+                    <option value="Emperrado">Emperrado</option>
+                    <option value="Espanado">Espanado</option>
+                    <option value="Enterrado">Enterrado</option>
+                    <option value="Registro Profundo">Registro Profundo</option>
+                    <option value="Desconhecido">Desconhecido</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Tipo</span>
@@ -61,6 +67,7 @@ session_start();
                     <option value="">Selecione uma opção...</option>
                     <option value="Subterrâneo">Subterrâneo</option>
                     <option value="Coluna">Coluna</option>
+                    <option value="Recalque">Recalque</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Vazão</span>
@@ -84,12 +91,12 @@ session_start();
                     <option value="Ruim">Ruim</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Status</span>
+                    <span style="font-size: 15px;" class="input-group-text">Situação</span>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="estado" id="estado">
+                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="situacao" id="situacao">
                     <option value="">Selecione uma opção...</option>
                     <option value="Ativo">Ativo</option>
-                    <option value="Inativo">Inoperante</option>
+                    <option value="Inoperante">Inoperante</option>
                     <option value="manutencao">Manutenção</option>
                 </select>
                 <div class="col-lg-1" style="margin-left: 95px;">
@@ -108,21 +115,29 @@ session_start();
                     <span style="font-size: 15px;" class="input-group-text">Latitude*</span>
                 </div>
                 <div class="col-lg-4">
-                    <input style="font-size: 15px;" type="float" class="form-control" id="lat" name="lat" required placeholder="(Ex: -25.099885179921507)">
+                    <input style="font-size: 15px;" type="float" class="form-control" id="lat" name="lat" onkeypress="return onlynumber();" required placeholder="(Ex: -25.099885179921507)">
                 </div>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Longitude*</span>
                 </div>
                 <div class="col-lg-4">
-                    <input style="font-size: 15px;" type="float" class="form-control" id="lng" name="lng" required placeholder="(Ex: -50.158647345674446)">
+                    <input style="font-size: 15px;" type="float" class="form-control" id="lng" name="lng" onkeypress="return onlynumber();" required placeholder="(Ex: -50.158647345674446)">
                 </div>
             </div>
-            <!-- DIV PARA INPUT DE IMAGEM testeteste -->
+            <!-- DIV PARA INPUT DE IMAGEM -->
             <div class="container-sm input-group mb-3" style="margin-top: 30px;">
                 <div class="col-lg-5">
-                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
+                    <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
-            </div><br>
+            </div>
+            <?php
+                if(isset($_SESSION['erro_upload'])):
+                ?>
+                    <p style="color:#000000; font-size: 13px">Por favor, envie arquivos com as seguintes extensões: jpg, jpeg ou png</p>
+                <?php
+                endif;
+                unset($_SESSION['erro_upload']);
+            ?>
             <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
             <?php
@@ -171,7 +186,7 @@ session_start();
                         <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["endereco"]; ?></td>
                         <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["vazao"]; ?></td>
                         <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["pressao"]; ?></td>
-                        <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["estado"]; ?></td>
+                        <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["situacao"]; ?></td>
                         <td style="font-size:12px; background-color:#fff; text-transform:capitalize;"><?php echo $dado["condicao"]; ?></td>
                         <td style="font-size:12px;"><?php echo date("d/m/Y", strtotime($dado["created_at"])); ?></td>
                     </tr>
@@ -188,6 +203,18 @@ session_start();
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
 
     <script>
+
+    function onlynumber(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode( key );
+        //var regex = /^[0-9.,]+$/;
+        var regex = /^[-0-9.]+$/;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {

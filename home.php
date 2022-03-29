@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if(!$_SESSION['usuario']) {
+    header('Location: ../index.php');
+    exit();
+}
+
 require_once('conexao.php');
 ?>
 
@@ -17,11 +22,13 @@ require_once('conexao.php');
         <script src="https://kit.fontawesome.com/19778fe837.js" crossorigin="anonymous"></script>
     </head>
 
-<header style="padding: 5px; color: #000000;">
-        <h2 style="text-align:right">Logado como <b><?php echo $_SESSION['usuario'];?> - <a href="/usuario/logout.php">(Sair)</a></b></h2>
-        <h2 style="font-weight: bold; text-align:right"><a href="<?php echo "/usuario/editar-perfil.php?id=".$_SESSION['usuario']?>"><i class="fa-solid fa-user"></i> Editar perfil</a></h2>
-</header>
-<body class="body_um" style="background-image: url('../img/2_GB.png');">
+    <?php if($_SESSION['usuario']){ ?>
+        <header style="padding: 5px; color: #000000;">
+                <h2 style="text-align:right">Logado como <b><?php echo $_SESSION['usuario'];?> - <a href="/usuario/logout.php">(Sair)</a></b></h2>
+                <h2 style="font-weight: bold; text-align:right"><a href="/usuario/editar-perfil.php"><i class="fa-solid fa-user"></i> Editar perfil</a></h2>
+        </header>
+    <?php } ?>
+<body class="body_um" style="background-image: url('/mapa/imagens/2_GB.png');">
 <h3 class="title-primary" style="font-size: 55px; margin-left: 510px;">Hidrantes PG</h3>
     <div class="frame_um">
         <h2 class="title_um"><b>Menu</b></h2>
@@ -39,7 +46,7 @@ require_once('conexao.php');
                 </div>
 
                 <div>
-                    <a href="/estoque/estoque-equipamento.php"><button class="botao">Estoque <i class="fa-solid fa-box"></i></button></a> <br/>
+                    <a href="/estoque/viatura/estoque-viatura.php"><button class="botao">Estoque <i class="fa-solid fa-box"></i></button></a> <br/>
                 </div>
             </div>
         <div id="cadastro" style="margin-top: 10px;">

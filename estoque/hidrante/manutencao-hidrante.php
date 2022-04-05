@@ -35,7 +35,7 @@ if(!$_SESSION['usuario']) {
     </head>
 <?php
     $mysqli = new mysqli('localhost', 'root', '', 'bombeirospg');
-    $consulta = "SELECT * FROM hidrantes WHERE situacao = 'Manutenção'";
+    $consulta = "SELECT * FROM hidrantes WHERE situacao = 'Manutencao'";
     $con = $mysqli->query($consulta) or die($mysqli->error);
 ?>
     <body style="background-color: #F5F5F8;">
@@ -125,7 +125,7 @@ if(!$_SESSION['usuario']) {
                                 endif;
                             ?>
                             <?php
-                                if($dado["situacao"] == 'Manutenção'):
+                                if($dado["situacao"] == 'Manutenção' || $dado["situacao"] == 'Manutencao'):
                                 ?>
                                     <button type="button" class="btn btn-sm btn-warning"><?php echo $dado["situacao"]; ?></button>
                                 <?php

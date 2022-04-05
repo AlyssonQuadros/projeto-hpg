@@ -125,7 +125,7 @@ if(!$_SESSION['usuario']) {
                                 endif;
                             ?>
                             <?php
-                                if($dado["situacao"] == 'Manutenção'):
+                                if($dado["situacao"] == 'Manutenção' || $dado["situacao"] == 'Manutencao'):
                                 ?>
                                     <button type="button" class="btn btn-sm btn-warning"><?php echo $dado["situacao"]; ?></button>
                                 <?php

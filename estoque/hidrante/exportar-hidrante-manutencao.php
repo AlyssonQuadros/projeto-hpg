@@ -33,7 +33,7 @@
             <tbody>
     ";
 
-    $query = $conexao->query("SELECT * FROM `hidrantes` WHERE situacao = 'Manutenção'") or die(mysqli_errno());
+    $query = $conexao->query("SELECT * FROM `hidrantes` WHERE situacao = 'Manutencao'") or die(mysqli_errno());
     while($fetch = $query->fetch_array()){
 
     $output .= "

@@ -18,6 +18,7 @@ html,body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 .hero .nav, .hero.is-success .nav {
     -webkit-box-shadow: none;

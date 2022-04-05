@@ -13,7 +13,7 @@ if(!$_SESSION['usuario']) {
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Viaturas</title>
+        <title>HPG - Cadastrar viatura</title>
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/412/412858.png">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/bulma.min.css"/>
@@ -62,20 +62,6 @@ if(!$_SESSION['usuario']) {
                     <option value="Em manutenção">Em manutencao</option>
                 </select>
             </div>
-            <!-- DIV PROS INPUTS: Latitude / Longitude -->
-            <!-- <div class="container-sm input-group mb-3">
-                <div class="col-lg-3.1">
-                    <span style="font-size: 15px;" class="input-group-text">Latitude</span>
-                </div>
-                    <input style="font-size: 15px;" maxlength="20" type="text" class="form-control" id="lat" name="lat" placeholder="lat">
-            </div>
-
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-3.1">
-                    <span style="font-size: 15px;" class="input-group-text">Longitude</span>
-                </div>
-                    <input style="font-size: 15px;" maxlength="20" type="text" class="form-control" id="lng" name="lng" placeholder="lng">
-            </div> -->
 
             <!-- DIV PARA INPUT DE IMAGEM -->
             <div class="container-sm input-group mb-3" style="margin-top: 30px;">
@@ -83,14 +69,7 @@ if(!$_SESSION['usuario']) {
                     <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div>
-            <?php
-                if(isset($_SESSION['erro_upload'])):
-                ?>
-                    <p style="color:#000000; font-size: 13px">Por favor, envie arquivos com as seguintes extensões: jpg, jpeg ou png</p>
-                <?php
-                endif;
-                unset($_SESSION['erro_upload']);
-            ?>
+            <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
             <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
             <?php
@@ -123,11 +102,11 @@ if(!$_SESSION['usuario']) {
         <table id="tabelaViatura" class="table table-hover table-inverse table-bordered table" style="border-color: #444444; margin-top:20px; color:#000000;" border="2">
             <thead>
                 <tr>
-                    <th style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Placa</b></td>
-                    <th style="font-size:13px; color: #000000; background-color:#ff8533"><b>Marca</b></td>
-                    <th style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Modelo</b></td>
-                    <th style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Ano</b></td>
-                    <th class="th-sm" style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Adicionado</b></th>
+                    <th style="width: 3%; font-size:13px; color: #000000; background-color:#ff8533"><b>Placa</b></td>
+                    <th style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Marca</b></td>
+                    <th style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Modelo</b></td>
+                    <th style="width: 2%; font-size:13px; color: #000000; background-color:#ff8533"><b>Ano</b></td>
+                    <th class="th-sm" style="width: 2%; font-size:13px; color: #000000; background-color:#ff8533"><b>Adicionado</b></th>
                     <!-- <th style="font-s3ze:16px; color: #000000; background-color:#ff8533"><b>Status</b></td> -->
                 </tr>
             </thead>

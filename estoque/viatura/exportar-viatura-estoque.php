@@ -20,6 +20,7 @@
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Ano</th>
+                    <th>Observação</th>
                     <th>Situação</th>
                     <th>Usuário</th>
                     <th>Data</th>
@@ -37,6 +38,7 @@
                     <td>".$fetch['marca']."</td>
                     <td>".$fetch['modelo']."</td>
                     <td>".$fetch['ano']."</td>
+                    <td>".$fetch['observacao']."</td>
                     <td>".$fetch['situacao']."</td>
                     <td>".$_SESSION['usuario']."</td>
                     <td>".$fetch['created_at']."</td>

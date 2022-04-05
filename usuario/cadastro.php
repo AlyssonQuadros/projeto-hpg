@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../conexao.php");
 
 if(!$_SESSION['usuario']) {
     header('Location: ../index.php');
@@ -16,8 +17,8 @@ if(!$_SESSION['usuario']) {
     <title>Hidrantes PG - Crie sua conta</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/412/412858.png">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="../css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -33,8 +34,9 @@ if(!$_SESSION['usuario']) {
                     if(isset($_SESSION['status_cadastro'])):
                     ?>
                     <div class="notification is-success">
-                      <p>Usuário cadastrado!</p>
-                      <p>Entre em sua conta <a href="logout.php">aqui</a></p>
+                        <button class="delete"></button>
+                        <p>Usuário cadastrado!</p>
+                        <p>Entre em sua conta <a href="logout.php">aqui</a></p>
                     </div>
                     <?php
                     endif;
@@ -45,8 +47,9 @@ if(!$_SESSION['usuario']) {
                     if(isset($_SESSION['usuario_existe'])):
                     ?>
                     <div class="notification is-info">
-                      <p><b>Erro.</b></p>
-                      <p>Usuário já existe.</p>
+                        <button class="delete"></button>
+                        <p><b>Erro.</b></p>
+                        <p>Usuário já existe.</p>
                     </div>
                     <?php
                     endif;
@@ -113,6 +116,16 @@ function verSenha() {
         senha.type = "password";
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            const $notification = $delete.parentNode;
+
+            $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+            });
+        });
+    });
 
 </script>
 

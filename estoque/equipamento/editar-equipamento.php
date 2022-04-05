@@ -79,9 +79,10 @@ session_start();
             <!-- INPUT DE IMAGEM -->
             <div class="container-sm input-group mb-3" style="margin-top: 30px;">
                 <div class="col-lg-8">
-                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" value="<?= $data['imagem']?>">
+                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem">
                 </div>
-            </div><br>
+            </div>
+            <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
             <button style="font-size: 12px;" type="submit" name="editEquip" id="editEquip" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
         <div class="row" style="margin-top: 20px;">

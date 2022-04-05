@@ -14,7 +14,7 @@ if(!$_SESSION['usuario']) {
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Hidrantes</title>
+        <title>HPG - Cadastrar hidrante</title>
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/412/412858.png">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/bulma.min.css"/>
@@ -130,14 +130,7 @@ if(!$_SESSION['usuario']) {
                     <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div>
-            <?php
-                if(isset($_SESSION['erro_upload'])):
-                ?>
-                    <p style="color:#000000; font-size: 13px">Por favor, envie arquivos com as seguintes extensões: jpg, jpeg ou png</p>
-                <?php
-                endif;
-                unset($_SESSION['erro_upload']);
-            ?>
+            <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
             <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
             <?php

@@ -39,7 +39,7 @@ session_start();
                             <div class="field">
                                 <label class="label-input">
                                     <i class="far fa-user icon-modify"></i>
-                                    <input name="usuario" name="text" class="input is-large" required placeholder="Seu usuário" autofocus="">
+                                    <input name="usuario" type="text" class="input is-large" required placeholder="Seu usuário" autofocus="">
                                 </label>
                             </div>
                             <div class="field">

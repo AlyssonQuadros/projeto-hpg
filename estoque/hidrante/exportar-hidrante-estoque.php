@@ -24,6 +24,7 @@
                     <th>Condição</th>
                     <th>Acesso</th>
                     <th>Situação</th>
+                    <th>Observação</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Usuário</th>
@@ -46,6 +47,7 @@
                     <td>".$fetch['condicao']."</td>
                     <td>".$fetch['acesso']."</td>
                     <td>".$fetch['situacao']."</td>
+                    <td>".$fetch['observacao']."</td>
                     <td>".$fetch['lat']."</td>
                     <td>".$fetch['lng']."</td>
                     <td>".$_SESSION['usuario']."</td>

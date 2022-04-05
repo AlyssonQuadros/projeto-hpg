@@ -18,7 +18,7 @@
 					<th>ID</th>
 					<th>Nº Patrimônio</th>
 					<th>Nome</th>
-					<th>Descrição</th>
+					<th>Observação</th>
 					<th>Condição</th>
                     <th>Situação</th>
                     <th>Usuário</th>

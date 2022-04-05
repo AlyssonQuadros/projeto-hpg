@@ -207,7 +207,6 @@ if(!$_SESSION['usuario']) {
                             <div style="padding-top: 15px;">
                                 <label for="situacao" class="col-form-label">Mover para:</label>
                                 <select class="form-select" name="situacao" id="situacao">
-                                    <option selected>Selecione uma opção...</option>
                                     <option value="Em uso">Em uso</option>
                                     <option value="Em estoque">Em estoque</option>
                                     <option value="Em manutenção">Em manutenção</option>

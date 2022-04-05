@@ -134,7 +134,8 @@
                 <div class="col-lg-5">
                     <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" value="<?= $data['imagem']?>">
                 </div>
-            </div><br>
+            </div>
+            <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
             <button style="font-size: 12px;" type="submit" name="editHidrante" id="editHidrante" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
             <?php

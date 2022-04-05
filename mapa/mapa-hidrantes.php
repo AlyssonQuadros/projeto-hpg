@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mapa de Hidrantes</title>
+    <title>HPG - Mapa de Hidrantes</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/412/412858.png">
     <style type="text/css">

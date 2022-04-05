@@ -82,7 +82,8 @@ session_start();
                 <div class="col-lg-5">
                     <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
-            </div><br>
+            </div>
+            <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
             <button style="font-size: 12px;" type="submit" name="editViatura" id="editViatura" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
         <div class="row" style="margin-top: 20px;">

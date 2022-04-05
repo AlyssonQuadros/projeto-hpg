@@ -53,7 +53,7 @@ if(!$_SESSION['usuario']) {
         <hr style="color: #ff6600;">
         <div class="row">
             <div class="col-5">
-                <h4 style="margin-top: 10px; margin-left: 10px;"><a href="../../viatura/cadastrar-viatura.php"><button id="btn-addEstoque" style="font-size: 14px;" type="button" class="btn btn-sm btn-success"><b>+</b> Adicionar</button></a> Viaturas:</h4>
+                <h4 style="margin-top: 10px; margin-left: 10px;"><a href="../../viatura/cadastrar-viatura.php"><button id="btn-addEstoque" style="font-size: 14px;" type="button" class="btn btn-sm btn-success"><b>+</b> Adicionar</button></a> Todas as viaturas:</h4>
             </div>
             <div style="text-align:right; margin-top: 10px; padding-right:23px" class="col-7">
                 <a href="/estoque/viatura/estoque-viatura.php"><button type="button" class="btn btn-sm btn-primary"> Todos</button></a>

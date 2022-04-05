@@ -134,9 +134,9 @@
                 e.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
                 //Verifica a cor que mais se adequa ao hidrante
                 function corHidrante(pressao,situacao,tipo){
-                    if(situacao == "Manutencao"){
+                    if(situacao == "Manutenção" || situacao == "Manutencao"){
                         return "/mapa/imagens/fire-hydrant-roxo.png";
-                    }if(tipo == "Recalque"){
+                    }else if(tipo == "Recalque"){
                         return "/mapa/imagens/fire-hydrant-azul.png";
                     } else if(pressao == "Boa"){
                         return "/mapa/imagens/fire-hydrant-verde.png";

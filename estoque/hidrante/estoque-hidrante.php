@@ -201,7 +201,7 @@ if(!$_SESSION['usuario']) {
                                 <select class="form-select" name="situacao" id="situacao">
                                     <option value="Ativo">Ativo</option>
                                     <option value="Inoperante">Inoperante</option>
-                                    <option value="Manutenção">Manutenção</option>
+                                    <option value="Manutencao">Manutencao</option>
                                 </select>
                             </div>
                             <div class="form-group" style="padding-top: 15px; padding-bottom: 15px;">

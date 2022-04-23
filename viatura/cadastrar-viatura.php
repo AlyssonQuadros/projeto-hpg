@@ -77,17 +77,39 @@ if(!$_SESSION['usuario']) {
                 ?>
                 <div class="notification is-success" style="width: 290px; height: 80px; margin-left: 500px; margin-top: 20px;">
                     <button class="delete"></button>
-                    <p>Viatura adicionada ao estoque!</p>
+                    <p style="font-size: 15px;">Viatura adicionada ao estoque!</p>
                 </div>
                 <?php
                 endif;
                 unset($_SESSION['status_cadastro']);
             ?>
-        <div style="margin-top: 20px;">
-            <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
-            <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
-            <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-            <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+            <?php
+                if(isset($_SESSION['placa_existe'])):
+                ?>
+                <div class="notification is-info" style="width: 290px; height: 100px; margin-left: 500px; margin-top: 20px;">
+                    <button class="delete"></button>
+                    <p style="font-size: 15px; margin-bottom:5px"><b>Erro!</b></p>
+                    <p style="font-size: 15px;">A placa informada já existe.</p>
+                </div>
+                <?php
+                endif;
+                unset($_SESSION['placa_existe']);
+            ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-4" style="margin-top: 20px; text-align:left">
+                    <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
+                    <a href="../estoque/viatura/estoque-viatura.php"><button type="button" class="btn btn-success"><i class="fa-solid fa-box"></i> Estoque</button></a>
+                </div>
+                <div class="col-4" style="margin-top: 20px;">
+                    <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
+                    <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
+                    <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
+                </div>
+                <div class="col-4" style="margin-top: 20px; text-align:right">
+                    <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../conexao.php");
-
+header('Content-Type: text/html; charset=UTF-8');
 // print_r($_FILES['imagem']);
 
 
@@ -64,10 +64,21 @@ $nome = $_POST['nome'];
 $descricao = $_POST['descricao'];
 $condicao = $_POST['condicao'];
 $situacao = $_POST['situacao'];
+$usuarioInsert = $_POST['usuarioInsert'];
 $imagem = $_FILES['imagem']['name'];
 
-$sql = "INSERT INTO equipamentos (patrimonio, nome, descricao, condicao, situacao, imagem, created_at)
-        VALUES ('$patrimonio', '$nome', '$descricao', '$condicao', '$situacao', '$imagem', NOW())";
+$sql = "select count(*) as total from equipamentos where patrimonio = '$patrimonio'";
+$result = mysqli_query($conexao, $sql);
+$row = mysqli_fetch_assoc($result);
+
+if($row['total'] == 1) {
+	$_SESSION['patri_existe'] = true;
+	header('Location: cadastrar-equipamento.php');
+	exit;
+}
+
+$sql = "INSERT INTO equipamentos (patrimonio, nome, descricao, condicao, situacao, usuarioInsert, imagem, created_at)
+        VALUES ('$patrimonio', '$nome', '$descricao', '$condicao', '$situacao', '{$_SESSION['usuario']}', '$imagem', NOW())";
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;

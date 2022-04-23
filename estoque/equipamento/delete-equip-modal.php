@@ -5,7 +5,7 @@
     if(isset($_POST['darBaixa'])){
         $id = $_POST['id_equip'];
 
-        $sql = "DELETE FROM `equipamentos` WHERE id_equip = $id";
+        $sql = "UPDATE `equipamentos` SET `excluido` = 1 WHERE id_equip = $id";
 
         if($conexao->query($sql) === TRUE){
             $_SESSION['sucesso_edit_modal'] = true;

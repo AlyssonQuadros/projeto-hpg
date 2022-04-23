@@ -56,9 +56,21 @@ $modelo = $_POST['modelo'];
 $ano = $_POST['ano'];
 $marca = $_POST['marca'];
 $situacao = $_POST['situacao'];
+$usuarioInsert = $_POST['usuarioInsert'];
 $imagem = $_FILES['imagem']['name'];
 
-$sql = "INSERT INTO viaturas (placa, modelo, ano, marca, situacao, imagem, created_at) VALUES ('$placa', '$modelo', '$ano', '$marca', '$situacao', '$imagem', NOW())";
+$sql = "select count(*) as total from viaturas where placa = '$placa'";
+$result = mysqli_query($conexao, $sql);
+$row = mysqli_fetch_assoc($result);
+
+if($row['total'] == 1) {
+	$_SESSION['placa_existe'] = true;
+	header('Location: cadastrar-viatura.php');
+	exit;
+}
+
+$sql = "INSERT INTO viaturas (placa, modelo, ano, marca, situacao, usuarioInsert, imagem, created_at) 
+        VALUES ('$placa', '$modelo', '$ano', '$marca', '$situacao', '{$_SESSION['usuario']}', '$imagem', NOW())";
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;

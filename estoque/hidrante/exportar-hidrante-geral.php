@@ -50,7 +50,7 @@
                     <td>".$fetch['observacao']."</td>
                     <td>".$fetch['lat']."</td>
                     <td>".$fetch['lng']."</td>
-                    <td>".$_SESSION['usuario']."</td>
+                    <td>".$fetch['usuarioInsert']."</td>
                     <td>".$fetch['created_at']."</td>
                 </tr>
     ";

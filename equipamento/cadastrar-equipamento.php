@@ -1,15 +1,20 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 session_start();
 if(!$_SESSION['usuario']) {
 	header('Location: ../index.php');
 	exit();
 }
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+		date_default_timezone_set('America/Sao_Paulo');
+		$encoding = mb_internal_encoding(); // ou UTF-8, ISO-8859-1...
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
     <head>
-        <meta charset="UTF-8"/>
+        <meta charset='utf-8'>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>HPG - Cadastrar equipamento</title>
@@ -18,7 +23,6 @@ if(!$_SESSION['usuario']) {
         <link rel="stylesheet" href="../css/bulma.min.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-        <script src="js/app.js"></script>
         <script src="https://kit.fontawesome.com/19778fe837.js" crossorigin="anonymous"></script>
     </head>
 
@@ -47,12 +51,14 @@ if(!$_SESSION['usuario']) {
                 <div class="col-lg-1" style="margin-left: 90px;">
                     <span style="font-size: 15px;" class="input-group-text">Condição*</span>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text" required name="condicao" id="condicao">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="Boa">Boa</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
-                </select>
+                <div class="col-lg-2" >
+                        <select class="form-select" style="font-size: 15px;" type="text" required name="condicao" id="condicao">
+                        <option value="">Selecione...</option>
+                        <option value="Boa">Boa</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Ruim">Ruim</option>
+                    </select>
+                </div>
                 <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
                     <option value="Em estoque" selected>Em estoque</option>
                     <option value="Em uso">Em uso</option>
@@ -82,25 +88,47 @@ if(!$_SESSION['usuario']) {
                 ?>
                 <div class="notification is-success" style="width: 290px; height: 80px; margin-left: 500px; margin-top: 20px;">
                     <button class="delete"></button>
-                    <p>Equipamento adicionado ao estoque!</p>
+                    <p style="font-size: 15px;">Equipamento adicionado ao estoque!</p>
                 </div>
                 <?php
                 endif;
                 unset($_SESSION['status_cadastro']);
             ?>
-        <div style="margin-top: 20px;">
-            <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
-            <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
-            <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-            <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+            <?php
+                if(isset($_SESSION['patri_existe'])):
+                ?>
+                <div class="notification is-info" style="width: 290px; height: 110px; margin-left: 500px; margin-top: 20px;">
+                    <button class="delete"></button>
+                    <p style="font-size: 15px; margin-bottom:5px"><b>Erro!</b></p>
+                    <p style="font-size: 15px;">O número de patrimônio informado já existe.</p>
+                </div>
+                <?php
+                endif;
+                unset($_SESSION['patri_existe']);
+            ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-4" style="margin-top: 20px; text-align:left">
+                    <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
+                    <a href="../estoque/equipamento/estoque-equipamento.php"><button type="button" class="btn btn-success"><i class="fa-solid fa-box"></i> Estoque</button></a>
+                </div>
+                <div class="col-4" style="margin-top: 20px;">
+                    <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
+                    <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
+                    <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
+                </div>
+                <div class="col-4" style="margin-top: 20px; text-align:right">
+                    <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <?php
     $mysqli = new mysqli('localhost', 'root', '', 'bombeirospg');
-    $consulta = "SELECT * FROM equipamentos";
-    $con = $mysqli->query($consulta) or die($mysqli->error);
+        $consulta = "SELECT * FROM equipamentos";
+        $con = $mysqli->query($consulta) or die($mysqli->error);
 ?>
     <div class="container-fluid mt-3" style="padding-bottom: 50px;">
         <h4 style="text-align: center; margin-top:30px;">Equipamentos:</h4>
@@ -112,7 +140,6 @@ if(!$_SESSION['usuario']) {
                     <th class="th-sm" style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Condição</b></th>
                     <th class="th-sm" style="width: 10%; font-size:13px; color: #000000; background-color:#ff8533"><b>Situação</b></th>
                     <th class="th-sm" style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Adicionado</b></th>
-                    <!-- <td style="font-s3ze: color: #000000;16px; background-color:#ff8533"><b>Status</b></td> -->
                 </tr>
             </thead>
             <tbody>

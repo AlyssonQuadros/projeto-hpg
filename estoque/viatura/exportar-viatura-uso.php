@@ -40,7 +40,7 @@
                     <td>".$fetch['ano']."</td>
                     <td>".$fetch['observacao']."</td>
                     <td>".$fetch['situacao']."</td>
-                    <td>".$_SESSION['usuario']."</td>
+                    <td>".$fetch['usuarioInsert']."</td>
                     <td>".$fetch['created_at']."</td>
                 </tr>
     ";

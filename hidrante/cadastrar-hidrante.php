@@ -48,66 +48,78 @@ if(!$_SESSION['usuario']) {
             <!-- DIV PROS SELECTS: situacao/Tipo/Vazão -->
             <div class="container-sm input-group mb-3">
                 <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Condição*</span>
+                    <span style="font-size: 15px;" class="input-group-text">Situação*</span>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="condicao" required id="condicao">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="Boa">Boa</option>
-                    <option value="Seco">Seco</option>
-                    <option value="Emperrado">Emperrado</option>
-                    <option value="Espanado">Espanado</option>
-                    <option value="Enterrado">Enterrado</option>
-                    <option value="Registro Profundo">Registro Profundo</option>
-                    <option value="Desconhecido">Desconhecido</option>
-                </select>
+                <div class="col-lg-2" >
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="situacao" required id="situacao">
+                        <option value="">Selecione...</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inoperante">Inoperante</option>
+                        <option value="manutencao">Manutenção</option>
+                    </select>
+                </div>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Tipo</span>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="tipo" id="tipo">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="Subterrâneo">Subterrâneo</option>
-                    <option value="Coluna">Coluna</option>
-                    <option value="Recalque">Recalque</option>
-                </select>
+                <div class="col-lg-2" >
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="tipo" id="tipo">
+                        <option value="">Selecione...</option>
+                        <option value="Subterrâneo">Subterrâneo</option>
+                        <option value="Coluna">Coluna</option>
+                        <option value="Recalque">Recalque</option>
+                    </select>
+                </div>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Vazão</span>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="vazao" id="vazao">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="Boa">Boa</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
-                </select>
+                <div class="col-lg-2" >
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="vazao" id="vazao">
+                        <option value="">Selecione...</option>
+                        <option value="Boa">Boa</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Ruim">Ruim</option>
+                    </select>
+                </div>
             </div>
             <!-- DIV PROS SELECTS: Pressão/Condição/Acesso -->
             <div class="container-sm input-group mb-3">
                 <div class="col-lg-1">
                     <span style="font-size: 15px;" class="input-group-text">Pressão</span>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="pressao" id="pressao">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="Boa">Boa</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
-                </select>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Situação</span>
+                <div class="col-lg-2" >
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="pressao" id="pressao">
+                        <option value="">Selecione...</option>
+                        <option value="Boa">Boa</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Ruim">Ruim</option>
+                    </select>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="situacao" id="situacao">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="Ativo">Ativo</option>
-                    <option value="Inoperante">Inoperante</option>
-                    <option value="manutencao">Manutenção</option>
+                <div class="col-lg-1" style="margin-left: 95px;">
+                    <span style="font-size: 15px;" class="input-group-text">Condição*</span>
+                </div>
+                <div class="col-lg-2" >
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="condicao" id="condicao">
+                        <option value="">Selecione...</option>
+                        <option value="Boa">Boa</option>
+                        <option value="Seco">Seco</option>
+                        <option value="Emperrado">Emperrado</option>
+                        <option value="Espanado">Espanado</option>
+                        <option value="Enterrado">Enterrado</option>
+                        <option value="Registro Profundo">Registro Profundo</option>
+                        <option value="Desconhecido">Desconhecido</option>
                 </select>
+                </div>
                 <div class="col-lg-1" style="margin-left: 95px;">
                     <span style="font-size: 15px;" class="input-group-text">Acesso</span>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="acesso" id="acesso">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="Fácil">Fácil</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Difícil">Difícil</option>
-                </select>
+                <div class="col-lg-2" >
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="acesso" id="acesso">
+                        <option value="">Selecione...</option>
+                        <option value="Fácil">Fácil</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Difícil">Difícil</option>
+                    </select>
+                </div>
             </div>
             <!-- DIV PROS INPUTS: Latitude/Longitude -->
             <div class="container-sm input-group mb-3" style="margin-top: 50px;">
@@ -138,17 +150,39 @@ if(!$_SESSION['usuario']) {
                 ?>
                 <div class="notification is-success" style="width: 290px; height: 80px; margin-left: 500px; margin-top: 20px;">
                     <button class="delete"></button>
-                    <p>Hidrante adicionado ao estoque!</p>
+                    <p style="font-size: 15px;">Hidrante adicionado ao estoque!</p>
                 </div>
                 <?php
                 endif;
                 unset($_SESSION['status_cadastro']);
             ?>
-        <div style="margin-top: 20px;">
-            <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
-            <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
-            <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-            <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+            <?php
+                if(isset($_SESSION['sigla_existe'])):
+                ?>
+                <div class="notification is-info" style="width: 290px; height: 100px; margin-left: 500px; margin-top: 20px;">
+                    <button class="delete"></button>
+                    <p style="font-size: 15px; margin-bottom:5px"><b>Erro!</b></p>
+                    <p style="font-size: 15px;">A sigla informada já existe.</p>
+                </div>
+                <?php
+                endif;
+                unset($_SESSION['sigla_existe']);
+            ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-4" style="margin-top: 20px; text-align:left">
+                    <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
+                    <a href="../estoque/hidrante/estoque-hidrante.php"><button type="button" class="btn btn-success"><i class="fa-solid fa-box"></i> Estoque</button></a>
+                </div>
+                <div class="col-4" style="margin-top: 20px;">
+                    <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
+                    <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
+                    <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
+                </div>
+                <div class="col-4" style="margin-top: 20px; text-align:right">
+                    <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

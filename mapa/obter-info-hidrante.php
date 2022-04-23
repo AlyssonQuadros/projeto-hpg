@@ -1,5 +1,7 @@
 <?php
         $mysqli = new mysqli("127.0.0.1", "root", "", "bombeirospg",3306);
+        $mysqli->set_charset("utf8mb4");
+
         if (mysqli_connect_errno($mysqli)) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }

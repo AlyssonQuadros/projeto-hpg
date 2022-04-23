@@ -35,18 +35,18 @@ if(!$_SESSION['usuario']) {
     </head>
 <?php
     $mysqli = new mysqli('localhost', 'root', '', 'bombeirospg');
-    $consulta = "SELECT * FROM hidrantes WHERE situacao = 'Inoperante'";
+    $consulta = "SELECT * FROM hidrantes WHERE excluido = 0 AND situacao = 'Inoperante'";
     $con = $mysqli->query($consulta) or die($mysqli->error);
 ?>
     <body style="background-color: #F5F5F8;">
-        <h2 style="color: #eb3131f5; margin-left: 10px; padding-top:15px"><i class="fa-solid fa-clipboard-list"></i> Estoque de hidrantes</h2>
+        <h2 style="color: #eb3131f5; margin-left: 10px; padding-top:15px"><i class="fa-solid fa-clipboard-list"></i> Acervo de hidrantes</h2>
 
         <div class="row">
             <div class="col-5" style="margin-left: 10px; margin-top: 20px">
                 <a href="../viatura/estoque-viatura.php"><button type="button" class="btn btn-danger"><i class="fa-solid fa-truck-medical"></i> Viatura</button></a>
                 <a href="../equipamento/estoque-equipamento.php"><button type="button" class="btn btn-danger"><i class="fa-solid fa-toolbox"></i> Equipamento</button></a>
                 <a href="../hidrante/estoque-hidrante.php"><button type="button" class="btn btn-danger"><i class="iconify" data-icon="mdi:fire-hydrant" style="font-size: 22px; vertical-align:top;"></i>Hidrante</button></a>
-                <a href="../../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+                <a href="../../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
             </div>
         </div>
         <hr style="color: #ff6600;">
@@ -55,10 +55,10 @@ if(!$_SESSION['usuario']) {
                 <h4 style="margin-top: 10px; margin-left: 10px;"><a href="../../hidrante/cadastrar-hidrante.php"><button id="btn-addEstoque" style="font-size: 14px;" type="button" class="btn btn-sm btn-success"><b>+</b> Adicionar</button></a> Hidrantes inoperantes:</h4>
             </div>
             <div style="text-align:right; margin-top: 10px; padding-right:23px" class="col-7">
-                <a href="/estoque/hidrante/estoque-hidrante.php"><button type="button" class="btn btn-sm btn-primary"> Todos</button></a>
-                <a href="/estoque/hidrante/em-estoque-hidrante.php"><button type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-box"></i> Ativo</button></a>
-                <a href="/estoque/hidrante/uso-hidrante.php"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-box-open"></i> Inoperante</button></a>
-                <a href="/estoque/hidrante/manutencao-hidrante.php"><button type="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
+                <a href="/estoque/hidrante/estoque-hidrante.php"><button id="btnTodos" type="button" class="btn btn-sm"> Todos</button></a>
+                <a href="/estoque/hidrante/em-estoque-hidrante.php"><button id="btnEstoque" type="button" class="btn btn-sm"><i class="fa-solid fa-box"></i> Ativo</button></a>
+                <a href="/estoque/hidrante/uso-hidrante.php"><button id="btnUso" type="button" class="btn btn-sm"><i class="fa-solid fa-box-open"></i> Inoperante</button></a>
+                <a href="/estoque/hidrante/manutencao-hidrante.php"><button id="btnManutencao" type="button" class="btn btn-sm "><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
                 <a href="/estoque/hidrante/exportar-hidrante-uso.php"><button id="btnExportar" type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-download"></i> Exportar dados</button></a>
             </div>
             <?php
@@ -66,11 +66,22 @@ if(!$_SESSION['usuario']) {
                 ?>
                 <div class="notification is-success" style="align-items:center; width: 300px; height: 60px; margin-left: 20px;">
                     <button class="delete"></button>
-                    <p>Hidrante editado com sucesso</p>
+                    <p>Hidrante editado com sucesso!</p>
                 </div>
                 <?php
                 endif;
                 unset($_SESSION['sucesso_edit']);
+            ?>
+            <?php
+                if(isset($_SESSION['sucesso_edit_modal'])):
+                ?>
+                <div class="notification is-success" style="align-items:center; width: 300px; height: 80px; margin-left: 20px;">
+                    <button class="delete"></button>
+                    <p>Situação do hidrante alterada com sucesso!</p>
+                </div>
+                <?php
+                endif;
+                unset($_SESSION['sucesso_edit_modal']);
             ?>
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
@@ -136,18 +147,18 @@ if(!$_SESSION['usuario']) {
                         <td class="text-center" style="font-size:12px; background-color:#fff">
                             <div class="btn-group">
                                 <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:12px;" type="button">Mover</button>
+                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:12px;" type="button">Operação</button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" data-toggle="modal" data-target="#modalMove"
                                         data-hidraid="<?php echo $dado["id_hidrantes"]; ?>"
                                         data-hidranome="<?php echo $dado["nome"]; ?>"
                                         data-hidraobs="<?php echo $dado["observacao"]; ?>"
-                                        data-hidrasit="<?php echo $dado["situacao"]; ?>">Mover hidrante</a>
+                                        data-hidrasit="<?php echo $dado["situacao"]; ?>">Alterar situação</a>
                                         <!-- <a class="dropdown-item" href="#">Ver histórico</a> -->
                                         <a class="dropdown-item" data-toggle="modal" data-target="#deletemodal" data-hidraid="<?php echo $dado["id_hidrantes"]; ?>">Dar baixa</a>
                                     </div>
                                 </div>
-                                <a style="margin-left:5px" href="<?php echo "editar-hidrante.php?id=".$dado['id_hidrantes']?>"><button style="font-size:12px;" type="button" class="btn btn-sm btn-secondary"><i style="" class="fa-solid fa-pen-to-square"></i> Editar</button></a>
+                                <a style="margin-left:5px" href="<?php echo "editar-hidrante.php?id=".$dado['id_hidrantes']?>"><button style="font-size:12px;" type="button" class="btn btn-sm btn-primary"><i style="" class="fa-solid fa-pen-to-square"></i> Editar</button></a>
                             </div>
                         </td>
                     </tr>
@@ -183,7 +194,7 @@ if(!$_SESSION['usuario']) {
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title" id="modalUsoLabel">Movimentar hidrante</h3>
+                        <h3 class="modal-title" id="modalUsoLabel">Alterar situação do hidrante</h3>
                         <i style="font-size: 30px;" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </i>
@@ -197,7 +208,7 @@ if(!$_SESSION['usuario']) {
                                 <input type="text" class="form-control" name="nome" id="nome" disabled>
                             </div>
                             <div style="padding-top: 15px;">
-                                <label for="situacao" class="col-form-label">Mover para:</label>
+                                <label for="situacao" class="col-form-label">Situação:</label>
                                 <select class="form-select" name="situacao" id="situacao">
                                     <option value="Ativo">Ativo</option>
                                     <option value="Inoperante">Inoperante</option>
@@ -210,8 +221,8 @@ if(!$_SESSION['usuario']) {
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                             <button type="submit" name="moveHidrante" id="moveHidrante" class="btn btn-warning">Salvar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                         </div>
                     </form>
                 </div>
@@ -238,8 +249,8 @@ if(!$_SESSION['usuario']) {
                             <h5>Tem certeza que deseja remover esse hidrante do estoque e do <b>mapa</b>?</h5>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cancelar </button>
                             <button type="submit" name="darBaixa" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Remover </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cancelar </button>
                         </div>
                     </form>
 

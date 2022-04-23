@@ -6,6 +6,7 @@
         $id = $_POST['id_hidrantes'];
 
         $sql = "DELETE FROM `hidrantes` WHERE id_hidrantes = $id";
+        // $sql = "UPDATE `hidrantes` SET `excluido` = 1 WHERE id_hidrantes = $id";
 
         if($conexao->query($sql) === TRUE){
             $_SESSION['sucesso_edit_modal'] = true;

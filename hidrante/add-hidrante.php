@@ -62,10 +62,21 @@ $condicao = $_POST['condicao'];
 $acesso = $_POST['acesso'];
 $lat = $_POST['lat'];
 $lng = $_POST['lng'];
+$usuarioInsert = $_POST['usuarioInsert'];
 $imagem = $_FILES['imagem']['name'];
 
-$sql = "INSERT INTO hidrantes (nome, endereco, situacao, tipo, vazao, pressao, condicao, acesso, lat, lng, imagem, created_at)
-        VALUES ('$nome', '$endereco', '$situacao', '$tipo', '$vazao', '$pressao', '$condicao', '$acesso', '$lat', '$lng', '$imagem', NOW())";
+$sql = "select count(*) as total from hidrantes where nome = '$nome'";
+$result = mysqli_query($conexao, $sql);
+$row = mysqli_fetch_assoc($result);
+
+if($row['total'] == 1) {
+	$_SESSION['sigla_existe'] = true;
+	header('Location: cadastrar-hidrante.php');
+	exit;
+}
+
+$sql = "INSERT INTO hidrantes (nome, endereco, situacao, tipo, vazao, pressao, condicao, acesso, lat, lng, usuarioInsert, imagem, created_at)
+        VALUES ('$nome', '$endereco', '$situacao', '$tipo', '$vazao', '$pressao', '$condicao', '$acesso', '$lat', '$lng', '{$_SESSION['usuario']}', '$imagem', NOW())";
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;

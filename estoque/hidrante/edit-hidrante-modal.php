@@ -1,4 +1,5 @@
 <?php
+session_start();
 
     require_once('../../conexao.php');
 
@@ -7,10 +8,12 @@
 
         $observacao = $_POST['observacao'];
         $situacao = $_POST['situacao'];
+        $usuarioInsert = $_POST['usuarioInsert'];
 
         $sql = "UPDATE `hidrantes` SET
                 `observacao` = '$observacao',
                 `situacao` = '$situacao',
+                `usuarioInsert` = '{$_SESSION['usuario']}',
                 `created_at` = NOW()
                 WHERE id_hidrantes = $id";
 

@@ -38,7 +38,7 @@
 					<td>".$fetch['descricao']."</td>
 					<td>".$fetch['condicao']."</td>
                     <td>".$fetch['situacao']."</td>
-                    <td>".$_SESSION['usuario']."</td>
+                    <td>".$fetch['usuarioInsert']."</td>
 					<td>".$fetch['created_at']."</td>
 				</tr>
 	";

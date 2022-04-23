@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <title>HPG - Mapa de Hidrantes</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://kit.fontawesome.com/19778fe837.js" crossorigin="anonymous"></script>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/412/412858.png">
     <style type="text/css">
         /* Always set the map height explicitly to define the size of the div
@@ -63,10 +64,12 @@
 
         #legend h3 {
             margin-top: 0;
+            text-align: center;
         }
 
         #legend img {
             vertical-align: middle;
+            padding-bottom: 5px;
         }
     </style>
     <script>
@@ -118,6 +121,10 @@
                     hydrantAzul: {
                         name: "Hidrante de Recalque",
                         icon: iconBase + "/mapa/imagens/fire-hydrant-azul.png",
+                    },
+                    hydrantLaranja: {
+                        name: "Novo hidrante",
+                        icon: iconBase + "/mapa/imagens/fire-hydrant-laranja.png",
                     },
                 };
                 const legend = document.getElementById("legend");
@@ -426,7 +433,10 @@
     />
 </div>
 <div id="map"></div>
-<div id="legend"><h3>Legenda</h3></div>
+<div id="legend">
+    <h3>Legenda</h3>
+    <h4><i class="fas fa-info-circle"></i> Clique sobre o mapa, e em <br> seguida sobre o hidrante laranja <br> para cadastrar um novo hidrante.</h4>
+</div>
 <div id="infowindow-content">
     <span id="place-name" class="title"></span><br />
     <span id="place-address"></span>

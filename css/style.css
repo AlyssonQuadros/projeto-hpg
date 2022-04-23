@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
 * {
     margin: 0;
@@ -287,10 +288,28 @@ footer p{
     border: 1px solid #22BF64;
 }
 
-#btnExportar{
+#btnTodos{
+    background-color: #ffffff;
+    border: 1px solid #000dff;
+    color: #000dff;
+}
+
+#btnEstoque{
     background-color: #ffffff;
     border: 1px solid green;
     color: green;
+}
+
+#btnUso{
+    background-color: #ffffff;
+    border: 1px solid red;
+    color: red;
+}
+
+#btnManutencao{
+    background-color: #ffffff;
+    border: 1px solid #ff4d00;
+    color: #ff4d00;
 }
 /* FLASH MSG */
 

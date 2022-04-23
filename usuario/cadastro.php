@@ -35,8 +35,8 @@ if(!$_SESSION['usuario']) {
                     ?>
                     <div class="notification is-success">
                         <button class="delete"></button>
-                        <p>Usuário cadastrado!</p>
-                        <p>Entre em sua conta <a href="logout.php">aqui</a></p>
+                        <p style="font-size: 15px;">Usuário cadastrado!</p>
+                        <p style="font-size: 15px;">Entre em sua conta <a href="logout.php">aqui</a></p>
                     </div>
                     <?php
                     endif;
@@ -48,8 +48,8 @@ if(!$_SESSION['usuario']) {
                     ?>
                     <div class="notification is-info">
                         <button class="delete"></button>
-                        <p><b>Erro.</b></p>
-                        <p>Usuário já existe.</p>
+                        <p style="font-size: 15px; margin-bottom:5px"><b>Erro!</b></p>
+                        <p style="font-size: 15px;">Usuário já existe.</p>
                     </div>
                     <?php
                     endif;

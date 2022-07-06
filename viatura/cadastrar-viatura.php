@@ -28,47 +28,40 @@ if(!$_SESSION['usuario']) {
         <h7 style="color:grey; font-size:15px"><i class="fas fa-info-circle"></i> Campos com * são obrigatórios</h7>
         <form action="add-viatura.php" method="POST" enctype="multipart/form-data">
             <!-- DIV PROS INPUTS: Placa / Marca -->
-            <div class="container-sm input-group mb-3" style="margin-top: 20px;">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Placa*</span>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Placa*</span>
+                    <input class="form-control" style="font-size: 15px;" maxlength="7" type="text" id="placa" name="placa" required placeholder="Número da placa">
                 </div>
-                <div class="col-lg-3">
-                    <input style="font-size: 15px;" maxlength="7" type="text" class="form-control" id="placa" name="placa" required placeholder="Número da placa">
-                </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Ano</span>
-                </div>
-                <div class="col-lg-6">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Ano</span>
                     <input style="font-size: 15px;" min="4" max="9999" onKeyPress="if(this.value.length==4) return false;" type="number" class="form-control" id="ano" name="ano" placeholder="Ano do veículo">
                 </div>
             </div>
-            <!-- DIV PROS INPUTS: Marca / Modelo -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Marca*</span>
-                </div>
-                <div class="col-lg-3">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Marca*</span>
                     <input style="font-size: 15px;" maxlength="50" type="text" class="form-control" id="marca" name="marca" required placeholder="Marca do veículo">
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Modelo*</span>
-                </div>
-                <div class="col-lg-6">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Modelo*</span>
                     <input style="font-size: 15px;" maxlength="50" type="text" class="form-control" id="modelo" name="modelo" required placeholder="Modelo do veículo">
                 </div>
-                <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
-                    <option value="Em estoque" selected>Em estoque</option>
-                    <option value="Em uso">Em uso</option>
-                    <option value="Em manutenção">Em manutencao</option>
-                </select>
             </div>
-
-            <!-- DIV PARA INPUT DE IMAGEM -->
-            <div class="container-sm input-group mb-3" style="margin-top: 30px;">
-                <div class="col-lg-5">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
                     <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div>
+            <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
+                <option value="Em estoque" selected>Em estoque</option>
+                <option value="Em uso">Em uso</option>
+                <option value="Em manutenção">Em Manutenção</option>
+            </select>
             <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
             <button style="font-size: 12px;" type="submit" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
         </form>
@@ -95,22 +88,20 @@ if(!$_SESSION['usuario']) {
                 endif;
                 unset($_SESSION['placa_existe']);
             ?>
-        <div class="container">
-            <div class="row">
-                <div class="col-4" style="margin-top: 20px; text-align:left">
-                    <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
-                    <a href="../estoque/viatura/estoque-viatura.php"><button type="button" class="btn btn-success"><i class="fa-solid fa-box"></i> Estoque</button></a>
-                </div>
-                <div class="col-4" style="margin-top: 20px;">
-                    <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
-                    <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
-                    <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-                </div>
-                <div class="col-4" style="margin-top: 20px; text-align:right">
-                    <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+            <div class="col-md-12">
+                <div style="margin-top: 20px; padding-left: 10px;">
+                    <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger btn-responsive">Viatura</button></a>
+                    <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger btn-responsive">Equipamento</button></a>
+                    <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger btn-responsive">Hidrante</button></a>
                 </div>
             </div>
-        </div>
+            <div class="col-md-12">
+                <div style="margin-top: 20px; padding-left: 10px;">
+                    <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary btn-responsive"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
+                    <a href="../estoque/viatura/estoque-viatura.php"><button type="button" class="btn btn-success btn-responsive"><i class="fa-solid fa-box"></i> Estoque</button></a>
+                    <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning btn-responsive"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+                </div>
+            </div>
     </div>
 </div>
 
@@ -121,7 +112,7 @@ if(!$_SESSION['usuario']) {
 ?>
     <div class="container-fluid mt-3" style="padding-bottom: 50px;">
         <h4 style="text-align: center; margin-top:30px;">Viaturas:</h4>
-        <table id="tabelaViatura" class="table table-hover table-inverse table-bordered table" style="border-color: #444444; margin-top:20px; color:#000000;" border="2">
+        <table id="tabelaViatura" class="table table-hover table-inverse table-bordered table" style="overflow-x: auto; border-color: #444444; margin-top:20px; color:#000000;" border="2">
             <thead>
                 <tr>
                     <th style="width: 3%; font-size:13px; color: #000000; background-color:#ff8533"><b>Placa</b></td>
@@ -167,23 +158,24 @@ if(!$_SESSION['usuario']) {
 
     $(document).ready(function(){
         $('#tabelaViatura').DataTable({
-                "pageLength": 25,
-                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]],
-                "language": {
-                    "lengthMenu": "Mostrando _MENU_ registros por página",
-                    "zeroRecords": "Nada encontrado",
-                    "info": "Mostrando página _PAGE_ de _PAGES_",
-                    "infoEmpty": "Nenhum registro disponível",
-                    "infoFiltered": "(filtrado de _MAX_ registros no total)",
-                    "search": "Pesquisar",
-                    "paginate": {
-                        "next": "Próximo",
-                        "previous": "Anterior",
-                        "first": "Primeiro",
-                        "last": "Último"
-                    },
-                }
-            });
+            "scrollX": true,
+            "pageLength": 25,
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]],
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "Nada encontrado",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
+                "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                "search": "Pesquisar",
+                "paginate": {
+                    "next": "Próximo",
+                    "previous": "Anterior",
+                    "first": "Primeiro",
+                    "last": "Último"
+                },
+            }
+        });
     });
     </script>
 

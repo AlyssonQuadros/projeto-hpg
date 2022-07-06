@@ -2,7 +2,7 @@
     session_start();
 
     header("Content-Type: application/xls");
-    header("Content-Disposition: attachment; filename=lista_equipamentos_em_manutencao.xls");
+    header("Content-Disposition: attachment; filename=lista_equipamentos_em_Manutenção.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
 

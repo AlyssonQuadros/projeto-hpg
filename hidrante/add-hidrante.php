@@ -60,6 +60,7 @@ $vazao = $_POST['vazao'];
 $pressao = $_POST['pressao'];
 $condicao = $_POST['condicao'];
 $acesso = $_POST['acesso'];
+$observacao = $_POST['observacao'];
 $lat = $_POST['lat'];
 $lng = $_POST['lng'];
 $usuarioInsert = $_POST['usuarioInsert'];
@@ -75,8 +76,8 @@ if($row['total'] == 1) {
 	exit;
 }
 
-$sql = "INSERT INTO hidrantes (nome, endereco, situacao, tipo, vazao, pressao, condicao, acesso, lat, lng, usuarioInsert, imagem, created_at)
-        VALUES ('$nome', '$endereco', '$situacao', '$tipo', '$vazao', '$pressao', '$condicao', '$acesso', '$lat', '$lng', '{$_SESSION['usuario']}', '$imagem', NOW())";
+$sql = "INSERT INTO hidrantes (nome, endereco, situacao, tipo, vazao, pressao, condicao, acesso, observacao, lat, lng, usuarioInsert, imagem, created_at)
+        VALUES ('$nome', '$endereco', '$situacao', '$tipo', '$vazao', '$pressao', '$condicao', '$acesso', '$observacao', '$lat', '$lng', '{$_SESSION['usuario']}', '$imagem', NOW())";
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;

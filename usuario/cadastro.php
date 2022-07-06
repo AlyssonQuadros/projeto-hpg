@@ -25,75 +25,73 @@ if(!$_SESSION['usuario']) {
 
 <body>
     <section class="hero is-success is-fullheight">
-        <div class="">
-            <div class="container has-text-centered">
-                <div class="column is-4 is-offset-4">
-                    <h1 style="color:black; font-size:25px; margin-top: 15px; margin-bottom:15px"><b>Crie a sua conta:</b></a></h1>
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h1 style="color:black; font-size:25px; margin-top: 15px; margin-bottom:15px"><b>Crie a sua conta:</b></a></h1>
 
-                    <?php
-                    if(isset($_SESSION['status_cadastro'])):
-                    ?>
-                    <div class="notification is-success">
-                        <button class="delete"></button>
-                        <p style="font-size: 15px;">Usuário cadastrado!</p>
-                        <p style="font-size: 15px;">Entre em sua conta <a href="logout.php">aqui</a></p>
-                    </div>
-                    <?php
-                    endif;
-                    unset($_SESSION['status_cadastro']);
-                    ?>
+                <?php
+                if(isset($_SESSION['status_cadastro'])):
+                ?>
+                <div class="notification is-success">
+                    <button class="delete"></button>
+                    <p style="font-size: 15px;">Usuário cadastrado!</p>
+                    <p style="font-size: 15px;">Entre em sua conta <a href="logout.php">aqui</a></p>
+                </div>
+                <?php
+                endif;
+                unset($_SESSION['status_cadastro']);
+                ?>
 
-                    <?php
-                    if(isset($_SESSION['usuario_existe'])):
-                    ?>
-                    <div class="notification is-info">
-                        <button class="delete"></button>
-                        <p style="font-size: 15px; margin-bottom:5px"><b>Erro!</b></p>
-                        <p style="font-size: 15px;">Usuário já existe.</p>
-                    </div>
-                    <?php
-                    endif;
-                    unset($_SESSION['usuario_existe']);
-                    ?>
-                    <div class="box">
-                        <form action="cadastrar.php" method="POST">
-                            <div class="field">
-                                <div class="control">
-                                    <input name="nome" type="text" class="input is-large" required placeholder="Nome" autofocus>
-                                </div>
+                <?php
+                if(isset($_SESSION['usuario_existe'])):
+                ?>
+                <div class="notification is-info">
+                    <button class="delete"></button>
+                    <p style="font-size: 15px; margin-bottom:5px"><b>Erro!</b></p>
+                    <p style="font-size: 15px;">Usuário já existe.</p>
+                </div>
+                <?php
+                endif;
+                unset($_SESSION['usuario_existe']);
+                ?>
+                <div class="box">
+                    <form action="cadastrar.php" method="POST">
+                        <div class="field">
+                            <div class="control">
+                                <input name="nome" type="text" class="input is-large" required placeholder="Nome" autofocus>
                             </div>
-                            <div class="field">
-                                <div class="control">
-                                    <input name="usuario" type="text" class="input is-large" required placeholder="Usuário">
-                                </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input name="usuario" type="text" class="input is-large" required placeholder="Usuário">
                             </div>
-                            <div class="field">
-                                <div class="control">
-                                    <input name="telefone" id="telefone" type="text" class="input is-large" placeholder="Telefone">
-                                </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input name="telefone" id="telefone" type="text" class="input is-large" placeholder="Telefone">
                             </div>
-                            <div class="field">
-                                <div class="control">
-                                    <input name="funcao" type="text" class="input is-large" required placeholder="Função">
-                                </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input name="funcao" type="text" class="input is-large" required placeholder="Função">
                             </div>
-                            <div class="field">
-                                <div class="control">
-                                    <input name="email" type="email" class="input is-large" required="email" placeholder="Email">
-                                </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input name="email" type="email" class="input is-large" required="email" placeholder="Email">
                             </div>
-                            <div class="field">
-                                <div class="control">
-                                    <input type="password" class="input is-large" name="senha" id="InputPassword" required placeholder="Senha">
-                                    <input style="margin-top: 20px;" type="checkbox" onclick="verSenha()"> Mostrar senha
-                                </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input type="password" class="input is-large" name="senha" id="InputPassword" required placeholder="Senha">
+                                <input style="margin-top: 20px;" type="checkbox" onclick="verSenha()"> Mostrar senha
                             </div>
-                            <div class="field" style="margin-top: 10px;">
-                                <a href="../home.php">Voltar</a>
-                            </div>
-                            <button type="submit" class="botao-um">Cadastrar</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="field" style="margin-top: 10px;">
+                            <a href="../home.php">Voltar</a>
+                        </div>
+                        <button type="submit" class="botao-um">Cadastrar</button>
+                    </form>
                 </div>
             </div>
         </div>

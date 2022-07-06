@@ -97,7 +97,6 @@ p {
 .title_um{
     color: #000000;
     text-align: center;
-    margin-top: 3%;
     font-size: 25px;
 }
 .title_dois{
@@ -230,8 +229,8 @@ footer p{
     border: none;
     margin-top: 1rem;
     height: 50px;
-    background-color: #ff9900de;
-    border: 1px solid #ff9900de;
+    background-color: #ff6200de;
+    border: 1px solid #ff6200de;
     transition: background-color .5s;
 }
 
@@ -288,6 +287,12 @@ footer p{
     border: 1px solid #22BF64;
 }
 
+#btnOperaEdit{
+    background-color: #ff8533;
+    border: 1px solid #ff8533;
+    color: #000000;
+}
+
 #btnTodos{
     background-color: #ffffff;
     border: 1px solid #000dff;
@@ -306,7 +311,7 @@ footer p{
     color: red;
 }
 
-#btnManutencao{
+#btnManutenção{
     background-color: #ffffff;
     border: 1px solid #ff4d00;
     color: #ff4d00;
@@ -389,7 +394,7 @@ input:-webkit-autofill
 .label-input {
     background-color: #ffffff;
     display: flex;
-    width: 300px;
+    width: auto;
     align-items: center;
     margin: 30px;
     margin-left: 0px;
@@ -466,14 +471,32 @@ input:-webkit-autofill
 }
 
 @media screen and (max-width: 740px) {
-    .form {
-        width: 50%;
+    .frame_um{
+        margin-left: 20px;
+        margin-top: 40px;
+        width: 380px;
+        height: 380px;
+        background-color: #eb3131f5;
+        border-radius: 10%;
+        position: absolute;
     }
+
 }
 
-@media screen and (max-width: 425px) {
-    .form {
-        width: 100%;
+@media (max-width: 768px) {
+    .btn-responsive {
+      padding:2px 4px;
+      font-size:80%;
+      line-height: 1;
+      border-radius:3px;
     }
-}
+  }
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .btn-responsive {
+      padding:4px 9px;
+      font-size:90%;
+      line-height: 1.2;
+    }
+  }
 

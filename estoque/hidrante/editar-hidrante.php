@@ -43,114 +43,120 @@
         <h7 style="color:grey; font-size:15px"><i class="fas fa-info-circle"></i> Campos com * são obrigatórios</h7>
         <form action="edit-hidrante.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
             <!-- DIV PROS DOIS INPUTS: Sigla / Endereço -->
-            <div class="container-sm input-group mb-3" style="margin-top: 20px;">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Sigla*</span>
-                </div>
-                <div class="col-lg-2">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Sigla*</span>
                     <input style="font-size: 15px;" maxlength="20" type="text" class="form-control" id="nome" name="nome" required value="<?= $data['nome']?>">
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Endereço*</span>
-                </div>
-                <div class="col-lg-7">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Endereço*</span>
                     <input style="font-size: 15px;" maxlength="100" type="text" class="form-control" id="endereco" name="endereco" required value="<?= $data['endereco']?>">
                 </div>
             </div>
             <!-- DIV PROS SELECTS: situacao/Tipo/Vazão -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Condição*</span>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Situação*</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="situacao" required id="situacao">
+                        <option value="Ativo" <?php echo ($data['situacao'] == 'Ativo')?'selected':''; ?>>Ativo</option>
+                        <option value="Inoperante" <?php echo ($data['situacao'] == 'Inoperante')?'selected':''; ?>>Inoperante</option>
+                        <option value="Manutenção" <?php echo ($data['situacao'] == 'Manutenção')?'selected':''; ?>>Manutenção</option>
+                    </select>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="condicao" required id="condicao" value="<?= $data['condicao']?>">
-                    <option value="Boa" icon="/img/fire-hydrant-vermelho.png">Boa</option>
-                    <option value="Seco" icon="/img/fire-hydrant-laranja.png">Seco</option>
-                    <option value="Emperrado" icon="/img/fire-hydrant-vermelho.png">Emperrado</option>
-                    <option value="Espanado" icon="/img/fire-hydrant-laranja.png">Espanado</option>
-                    <option value="Enterrado" icon="/img/fire-hydrant-amarelo.png">Enterrado</option>
-                    <option value="Registro Profundo" icon="/img/fire-hydrant-vermelho.png">Registro Profundo</option>
-                    <option value="Desconhecido" icon="/img/fire-hydrant-laranja.png">Desconhecido</option>
-                </select>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Tipo</span>
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Condição*</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="condicao" id="condicao">
+                        <option value="Boa" <?php echo ($data['condicao'] == 'Boa')?'selected':''; ?>>Boa</option>
+                        <option value="Seco" <?php echo ($data['condicao'] == 'Seco')?'selected':''; ?>>Seco</option>
+                        <option value="Emperrado" <?php echo ($data['condicao'] == 'Emperrado')?'selected':''; ?>>Emperrado</option>
+                        <option value="Espanado" <?php echo ($data['condicao'] == 'Espanado')?'selected':''; ?>>Espanado</option>
+                        <option value="Enterrado" <?php echo ($data['condicao'] == 'Enterrado')?'selected':''; ?>>Enterrado</option>
+                        <option value="Registro Profundo" <?php echo ($data['condicao'] == 'Registro Profundo')?'selected':''; ?>>Registro Profundo</option>
+                        <option value="Desconhecido" <?php echo ($data['condicao'] == 'Desconhecido')?'selected':''; ?>>Desconhecido</option>
+                    </select>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="tipo" id="tipo" value="<?= $data['tipo']?>">
-                    <option value="Subterrâneo">Subterrâneo</option>
-                    <option value="Coluna">Coluna</option>
-                </select>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Vazão</span>
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Tipo</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="tipo" id="tipo">
+                        <option value="Subterrâneo" <?php echo ($data['tipo'] == 'Subterrâneo')?'selected':''; ?>>Subterrâneo</option>
+                        <option value="Coluna" <?php echo ($data['tipo'] == 'Coluna')?'selected':''; ?>>Coluna</option>
+                        <option value="Recalque" <?php echo ($data['tipo'] == 'Recalque')?'selected':''; ?>>Recalque</option>
+                    </select>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="vazao" id="vazao" value="<?= $data['vazao']?>">
-                    <option value="Boa">Boa</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
-                </select>
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Vazão</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="vazao" id="vazao">
+                        <option value="Boa" <?php echo ($data['vazao'] == 'Boa')?'selected':''; ?>>Boa</option>
+                        <option value="Regular" <?php echo ($data['vazao'] == 'Regular')?'selected':''; ?>>Regular</option>
+                        <option value="Ruim" <?php echo ($data['vazao'] == 'Ruim')?'selected':''; ?>>Ruim</option>
+                    </select>
+                </div>
             </div>
             <!-- DIV PROS SELECTS: Pressão/Condição/Acesso -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Pressão</span>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Pressão</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="pressao" id="pressao">
+                        <option value="Boa" <?php echo ($data['pressao'] == 'Boa')?'selected':''; ?>>Boa</option>
+                        <option value="Regular" <?php echo ($data['pressao'] == 'Regular')?'selected':''; ?>>Regular</option>
+                        <option value="Ruim" <?php echo ($data['pressao'] == 'Ruim')?'selected':''; ?>>Ruim</option>
+                    </select>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="pressao" id="pressao" value="<?= $data['pressao']?>">
-                    <option value="Boa">Boa</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
-                </select>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Situação</span>
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Acesso</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="acesso" id="acesso">
+                        <option value="Fácil" <?php echo ($data['acesso'] == 'Fácil')?'selected':''; ?>>Fácil</option>
+                        <option value="Regular" <?php echo ($data['acesso'] == 'Regular')?'selected':''; ?>>Regular</option>
+                        <option value="Difícil" <?php echo ($data['acesso'] == 'Difícil')?'selected':''; ?>>Difícil</option>
+                    </select>
                 </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="situacao" id="situacao" value="<?= $data['situacao']?>">
-                    <option value="Ativo">Ativo</option>
-                    <option value="Inoperante">Inoperante</option>
-                    <option value="manutencao">Manutenção</option>
-                </select>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Acesso</span>
-                </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text"  name="acesso" id="acesso" value="<?= $data['acesso']?>">
-                    <option value="Fácil">Fácil</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Difícil">Difícil</option>
-                </select>
             </div>
             <!-- DIV PROS INPUTS: Latitude/Longitude -->
-            <div class="container-sm input-group mb-3" style="margin-top: 50px;">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Latitude*</span>
-                </div>
-                <div class="col-lg-4">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Latitude*</span>
                     <input style="font-size: 15px;" type="float" class="form-control" id="lat" name="lat" required value="<?= $data['lat']?>">
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Longitude*</span>
-                </div>
-                <div class="col-lg-4">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Longitude*</span>
                     <input style="font-size: 15px;" type="float" class="form-control" id="lng" name="lng" required value="<?= $data['lng']?>">
                 </div>
             </div>
-            <!-- DIV PARA INPUT DE IMAGEM testeteste -->
-            <div class="container-sm input-group mb-3" style="margin-top: 30px;">
-                <div class="col-lg-5">
-                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" value="<?= $data['imagem']?>">
+            <!-- DIV PARA INPUT DE IMAGEM -->
+            <!-- <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Observação</span>
+                    <textarea style="font-size: 15px;" maxlength="200" name="observacao" id="observacao" class="form-control"><?= $data['observacao']?></textarea>
                 </div>
             </div>
-            <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
-            <button style="font-size: 12px;" type="submit" name="editHidrante" id="editHidrante" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
-        </form>
-            <?php
-                if(isset($_SESSION['status_cadastro'])):
-                ?>
-                <div class="notification is-success" style="width: 290px; height: 80px; margin-left: 500px; margin-top: 20px;">
-                    <button class="delete"></button>
-                    <p>Hidrante adicionado ao estoque!</p>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
-                <?php
-                endif;
-                unset($_SESSION['status_cadastro']);
-            ?>
-        <div class="col-2" style="margin-left: 33px;">
-            <a href="/estoque/hidrante/estoque-hidrante.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+            </div>
+            <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br> -->
+            <div class="col-md-12">
+                <div style="margin-top: 20px;">
+                    <button style="font-size: 12px;" type="submit" name="editHidrante" id="editHidrante" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-12">
+            <div style="margin-top: 20px;">
+                <a href="/estoque/hidrante/estoque-hidrante.php"><button type="button" style="color:#F5F5F8" class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+            </div>
         </div>
     </div>
 </div>
@@ -162,7 +168,7 @@
 ?>
     <div class="container-fluid mt-3" style="padding-bottom: 50px;">
         <h4 style="text-align: center; margin-top:30px;">Hidrantes:</h4>
-        <table id="tabelaHidrante" class="table table-hover table-bordered" style="border-color: #444444; margin-top:20px; margin-bottom:40px; color:#000000;" border="2">
+        <table id="tabelaHidrante" class="table table-hover table-bordered" style="overflow-x: auto; border-color: #444444; margin-top:20px; margin-bottom:40px; color:#000000;" border="2">
                 <thead>
                     <tr>
                         <th style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Sigla</b></th>
@@ -211,6 +217,7 @@
 
     $(document).ready(function(){
         $('#tabelaHidrante').DataTable({
+                "scrollX": true,
                 "pageLength": 25,
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]],
                 "language": {

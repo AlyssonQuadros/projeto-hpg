@@ -58,7 +58,7 @@ if(!$_SESSION['usuario']) {
                 <a href="/estoque/viatura/estoque-viatura.php"><button id="btnTodos" type="button" class="btn btn-sm"> Todos</button></a>
                 <a href="/estoque/viatura/em-estoque-viatura.php"><button id="btnEstoque" type="button" class="btn btn-sm "><i class="fa-solid fa-box"></i> Em estoque</button></a>
                 <a href="/estoque/viatura/uso-viatura.php"><button id="btnUso" type="button" class="btn btn-sm "><i class="fa-solid fa-box-open"></i> Em uso</button></a>
-                <a href="/estoque/viatura/manutencao-viatura.php"><button id="btnManutencao" type="button" class="btn btn-sm "><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
+                <a href="/estoque/viatura/manutencao-viatura.php"><button id="btnManutenção" type="button" class="btn btn-sm "><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
                 <a href="/estoque/viatura/exportar-viatura-estoque.php"><button id="btnExportar" type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-download"></i> Exportar dados</button></a>
             </div>
             <?php

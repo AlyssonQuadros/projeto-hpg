@@ -42,53 +42,50 @@ session_start();
         <h7 style="color:grey; font-size:15px"><i class="fas fa-info-circle"></i> Campos com * são obrigatórios</h7>
         <form action="edit-viatura.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
             <!-- DIV PROS INPUTS: Placa / Marca -->
-            <div class="container-sm input-group mb-3" style="margin-top: 20px;">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Placa*</span>
-                </div>
-                <div class="col-lg-3">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Placa*</span>
                     <input style="font-size: 15px;" maxlength="7" type="text" class="form-control" id="placa" name="placa" required value="<?= $data['placa']?>">
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Ano</span>
-                </div>
-                <div class="col-lg-6">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Ano</span>
                     <input style="font-size: 15px;" min="4" max="9999" onKeyPress="if(this.value.length==4) return false;" type="number" class="form-control" id="ano" name="ano" value="<?= $data['ano']?>">
                 </div>
             </div>
-            <!-- DIV PROS INPUTS: Marca / Modelo -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Marca*</span>
-                </div>
-                <div class="col-lg-3">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Marca*</span>
                     <input style="font-size: 15px;" maxlength="50" type="text" class="form-control" id="marca" name="marca" required value="<?= $data['marca']?>">
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Modelo*</span>
-                </div>
-                <div class="col-lg-6">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Modelo*</span>
                     <input style="font-size: 15px;" maxlength="50" type="text" class="form-control" id="modelo" name="modelo" required value="<?= $data['modelo']?>">
                 </div>
-                <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
-                    <option value="Em estoque" selected>Em estoque</option>
-                    <option value="Em uso">Em uso</option>
-                    <option value="Em manutenção">Em manutencao</option>
-                </select>
             </div>
-
-            <!-- DIV PARA INPUT DE IMAGEM -->
-            <div class="container-sm input-group mb-3" style="margin-top: 30px;">
-                <div class="col-lg-5">
-                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div>
+            <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
+                <option value="Em estoque" selected>Em estoque</option>
+                <option value="Em uso">Em uso</option>
+                <option value="Em manutenção">Em Manutenção</option>
+            </select>
             <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
-            <button style="font-size: 12px;" type="submit" name="editViatura" id="editViatura" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
+            <div class="col-md-12">
+                <div style="margin-top: 20px;">
+                <button style="font-size: 12px;" type="submit" name="editViatura" id="editViatura" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
+                </div>
+            </div>
         </form>
-        <div class="row" style="margin-top: 20px;">
-            <div class="col-2" style="margin-left: 33px;">
-                <a href="/estoque/viatura/estoque-viatura.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+        <div class="col-md-12">
+            <div style="margin-top: 20px;">
+                <a href="/estoque/viatura/estoque-viatura.php"><button type="button" style="color:#F5F5F8" class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
             </div>
         </div>
     </div>

@@ -11,10 +11,9 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
-        <meta charset='utf-8'>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>HPG - Cadastrar equipamento</title>
@@ -32,51 +31,45 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <h7 style="color:grey; font-size:15px"><i class="fas fa-info-circle"></i> Campos com * são obrigatórios</h7>
         <form action="add-equipamento.php" method="POST" enctype="multipart/form-data">
             <!-- DIV PRO INPUT: Nº Patrimônio -->
-            <div class="container-sm input-group mb-3" style="margin-top: 20px;">
-                <div class="col-lg-">
-                    <span style="font-size: 15px;" class="input-group-text" id="basic-addon1">Nº Patrimônio*</span>
-                </div>
-                <div class="col-lg-3">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Nº Patrimônio*</span>
                     <input style="font-size: 15px;" type="text" class="form-control" id="patrimonio" name="patrimonio" onkeypress="return onlynumber();" required placeholder="Número do patrimônio">
                 </div>
             </div>
             <!-- DIV PROS INPUTS/SELECT: Nome / Condicao -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text" id="basic-addon1">Nome*</span>
-                </div>
-                <div class="col-lg-7">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Nome*</span>
                     <input style="font-size: 15px;" maxlength="100" type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do equipamento">
                 </div>
-                <div class="col-lg-1" style="margin-left: 90px;">
-                    <span style="font-size: 15px;" class="input-group-text">Condição*</span>
-                </div>
-                <div class="col-lg-2" >
-                        <select class="form-select" style="font-size: 15px;" type="text" required name="condicao" id="condicao">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Condição*</span>
+                    <select class="form-select" style="font-size: 15px;" type="text" required name="condicao" id="condicao">
                         <option value="">Selecione...</option>
                         <option value="Boa">Boa</option>
                         <option value="Regular">Regular</option>
                         <option value="Ruim">Ruim</option>
                     </select>
                 </div>
-                <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
-                    <option value="Em estoque" selected>Em estoque</option>
-                    <option value="Em uso">Em uso</option>
-                    <option value="Em manutenção">Em manutencao</option>
-                </select>
             </div>
+            <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
+                <option value="Em estoque" selected>Em estoque</option>
+                <option value="Em uso">Em uso</option>
+                <option value="Em manutenção">Em Manutenção</option>
+            </select>
             <!-- DIV PRA DESCRICAO -->
-            <div class="container-sm input-group">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Descrição</span>
-                </div>
-                <div class="col-lg-7">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Descrição</span>
                     <textarea style="font-size: 15px;" maxlength="200" name="descricao" id="descricao" class="form-control" placeholder="Descrição do equipamento (opcional)"></textarea>
                 </div>
             </div>
             <!-- INPUT DE IMAGEM -->
-            <div class="container-sm input-group mb-3" style="margin-top: 30px;">
-                <div class="col-lg-8">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
                     <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div>
@@ -106,20 +99,18 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                 endif;
                 unset($_SESSION['patri_existe']);
             ?>
-        <div class="container">
-            <div class="row">
-                <div class="col-4" style="margin-top: 20px; text-align:left">
-                    <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
-                    <a href="../estoque/equipamento/estoque-equipamento.php"><button type="button" class="btn btn-success"><i class="fa-solid fa-box"></i> Estoque</button></a>
-                </div>
-                <div class="col-4" style="margin-top: 20px;">
-                    <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
-                    <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
-                    <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-                </div>
-                <div class="col-4" style="margin-top: 20px; text-align:right">
-                    <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
-                </div>
+        <div class="col-md-12">
+            <div style="margin-top: 20px; padding-left: 10px;">
+                <a href="../viatura/cadastrar-viatura.php"><button style="margin-bottom:5px" type="button" class="btn btn-danger">Viatura</button></a>
+                <a href="../equipamento/cadastrar-equipamento.php"><button style="margin-bottom:5px" type="button" class="btn btn-danger">Equipamento</button></a>
+                <a href="../hidrante/cadastrar-hidrante.php"><button style="margin-bottom:5px" type="button" class="btn btn-danger">Hidrante</button></a>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div style="margin-top: 10px; padding-left: 10px;">
+                <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
+                <a href="../estoque/equipamento/estoque-equipamento.php"><button type="button" class="btn btn-success"><i class="fa-solid fa-box"></i> Estoque</button></a>
+                <a href="../home.php"><button type="button" style="color:#F5F5F8; background-color:#ff9900f5; border-color:#ff9900f5;" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
             </div>
         </div>
     </div>
@@ -132,7 +123,10 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 ?>
     <div class="container-fluid mt-3" style="padding-bottom: 50px;">
         <h4 style="text-align: center; margin-top:30px;">Equipamentos:</h4>
-        <table id="tabelaEquip" class="table table-hover table-bordered" style="border-color: #444444; margin-top:20px; color:#000000;" border="2">
+            <?php while($dado = $con->fetch_array()){ ?>
+                <?php echo $dado["nome"]; ?></br>
+            <?php } ?>
+        <table id="tabelaEquip" class="table table-hover table-bordered" style="overflow-x: auto; border-color: #444444; margin-top:20px; color:#000000;" border="2">
             <thead>
                 <tr>
                     <th class="th-sm" style="width: 12%; font-size:13px; color: #000000; background-color:#ff8533"><b>Nº Patrimônio</b></th>
@@ -189,6 +183,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 
     $(document).ready(function(){
         $('#tabelaEquip').DataTable({
+                "scrollX": true,
                 "pageLength": 25,
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]],
                 "language": {

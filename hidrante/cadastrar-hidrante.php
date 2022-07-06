@@ -18,6 +18,7 @@ if(!$_SESSION['usuario']) {
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/412/412858.png">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/bulma.min.css"/>
+        <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,73 +32,33 @@ if(!$_SESSION['usuario']) {
         <h7 style="color:grey; font-size:15px"><i class="fas fa-info-circle"></i> Campos com * são obrigatórios</h7>
         <form action="add-hidrante.php" method="POST" enctype="multipart/form-data">
             <!-- DIV PROS DOIS INPUTS: Sigla / Endereço -->
-            <div class="container-sm input-group mb-3" style="margin-top: 20px;">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Sigla*</span>
-                </div>
-                <div class="col-lg-2">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Sigla*</span>
                     <input style="font-size: 15px;" maxlength="20" type="text" class="form-control" id="nome" name="nome" required placeholder="(Ex:DL01, ES01...)">
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Endereço*</span>
-                </div>
-                <div class="col-lg-7">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Endereço*</span>
                     <input style="font-size: 15px;" maxlength="100" type="text" class="form-control" id="endereco" name="endereco" required placeholder="Rua onde está localizado o hidrante">
                 </div>
             </div>
             <!-- DIV PROS SELECTS: situacao/Tipo/Vazão -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Situação*</span>
-                </div>
-                <div class="col-lg-2" >
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Situação*</span>
                     <select class="form-select" style="font-size: 15px;" type="text"  name="situacao" required id="situacao">
                         <option value="">Selecione...</option>
                         <option value="Ativo">Ativo</option>
                         <option value="Inoperante">Inoperante</option>
-                        <option value="manutencao">Manutenção</option>
-                    </select>
-                </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Tipo</span>
-                </div>
-                <div class="col-lg-2" >
-                    <select class="form-select" style="font-size: 15px;" type="text"  name="tipo" id="tipo">
-                        <option value="">Selecione...</option>
-                        <option value="Subterrâneo">Subterrâneo</option>
-                        <option value="Coluna">Coluna</option>
-                        <option value="Recalque">Recalque</option>
-                    </select>
-                </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Vazão</span>
-                </div>
-                <div class="col-lg-2" >
-                    <select class="form-select" style="font-size: 15px;" type="text"  name="vazao" id="vazao">
-                        <option value="">Selecione...</option>
-                        <option value="Boa">Boa</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Ruim">Ruim</option>
+                        <option value="Manutenção">Manutenção</option>
                     </select>
                 </div>
             </div>
-            <!-- DIV PROS SELECTS: Pressão/Condição/Acesso -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Pressão</span>
-                </div>
-                <div class="col-lg-2" >
-                    <select class="form-select" style="font-size: 15px;" type="text"  name="pressao" id="pressao">
-                        <option value="">Selecione...</option>
-                        <option value="Boa">Boa</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Ruim">Ruim</option>
-                    </select>
-                </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Condição*</span>
-                </div>
-                <div class="col-lg-2" >
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Condição*</span>
                     <select class="form-select" style="font-size: 15px;" type="text"  name="condicao" id="condicao">
                         <option value="">Selecione...</option>
                         <option value="Boa">Boa</option>
@@ -107,12 +68,46 @@ if(!$_SESSION['usuario']) {
                         <option value="Enterrado">Enterrado</option>
                         <option value="Registro Profundo">Registro Profundo</option>
                         <option value="Desconhecido">Desconhecido</option>
-                </select>
+                    </select>
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Acesso</span>
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Tipo</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="tipo" id="tipo">
+                        <option value="">Selecione...</option>
+                        <option value="Subterrâneo">Subterrâneo</option>
+                        <option value="Coluna">Coluna</option>
+                        <option value="Recalque">Recalque</option>
+                    </select>
                 </div>
-                <div class="col-lg-2" >
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Vazão</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="vazao" id="vazao">
+                        <option value="">Selecione...</option>
+                        <option value="Boa">Boa</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Ruim">Ruim</option>
+                    </select>
+                </div>
+            </div>
+            <!-- DIV PROS SELECTS: Pressão/Condição/Acesso -->
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Pressão</span>
+                    <select class="form-select" style="font-size: 15px;" type="text"  name="pressao" id="pressao">
+                        <option value="">Selecione...</option>
+                        <option value="Boa">Boa</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Ruim">Ruim</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Acesso</span>
                     <select class="form-select" style="font-size: 15px;" type="text"  name="acesso" id="acesso">
                         <option value="">Selecione...</option>
                         <option value="Fácil">Fácil</option>
@@ -122,23 +117,27 @@ if(!$_SESSION['usuario']) {
                 </div>
             </div>
             <!-- DIV PROS INPUTS: Latitude/Longitude -->
-            <div class="container-sm input-group mb-3" style="margin-top: 50px;">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Latitude*</span>
-                </div>
-                <div class="col-lg-4">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Latitude*</span>
                     <input style="font-size: 15px;" type="float" class="form-control" id="lat" name="lat" onkeypress="return onlynumber();" required placeholder="(Ex: -25.099885179921507)">
                 </div>
-                <div class="col-lg-1" style="margin-left: 95px;">
-                    <span style="font-size: 15px;" class="input-group-text">Longitude*</span>
-                </div>
-                <div class="col-lg-4">
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Longitude*</span>
                     <input style="font-size: 15px;" type="float" class="form-control" id="lng" name="lng" onkeypress="return onlynumber();" required placeholder="(Ex: -50.158647345674446)">
                 </div>
             </div>
             <!-- DIV PARA INPUT DE IMAGEM -->
-            <div class="container-sm input-group mb-3" style="margin-top: 30px;">
-                <div class="col-lg-5">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Observação</span>
+                    <textarea style="font-size: 15px;" maxlength="200" name="observacao" id="observacao" class="form-control" placeholder="Observações sobre o hidrante..."></textarea>
+                </div>
+            </div>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
                     <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div>
@@ -168,20 +167,18 @@ if(!$_SESSION['usuario']) {
                 endif;
                 unset($_SESSION['sigla_existe']);
             ?>
-        <div class="container">
-            <div class="row">
-                <div class="col-4" style="margin-top: 20px; text-align:left">
-                    <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
-                    <a href="../estoque/hidrante/estoque-hidrante.php"><button type="button" class="btn btn-success"><i class="fa-solid fa-box"></i> Estoque</button></a>
-                </div>
-                <div class="col-4" style="margin-top: 20px;">
-                    <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
-                    <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
-                    <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
-                </div>
-                <div class="col-4" style="margin-top: 20px; text-align:right">
-                    <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
-                </div>
+        <div class="col-md-12">
+            <div style="margin-top: 20px; padding-left: 10px;">
+                <a href="../viatura/cadastrar-viatura.php"><button type="button" class="btn btn-danger">Viatura</button></a>
+                <a href="../equipamento/cadastrar-equipamento.php"><button type="button" class="btn btn-danger">Equipamento</button></a>
+                <a href="../hidrante/cadastrar-hidrante.php"><button type="button" class="btn btn-danger">Hidrante</button></a>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div style="margin-top: 20px; padding-left: 10px;">
+                <a href="../mapa/mapa-hidrantes.php"><button type="button" class="btn btn-primary"><i class="fa-solid fa-map-location-dot"></i> Mapa</button></a>
+                <a href="../estoque/hidrante/estoque-hidrante.php"><button type="button" class="btn btn-success"><i class="iconify" data-icon="mdi:fire-hydrant" style="font-size: 22px; vertical-align:top;"></i> Acervo</button></a>
+                <a href="../home.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
             </div>
         </div>
     </div>
@@ -194,7 +191,7 @@ if(!$_SESSION['usuario']) {
 ?>
     <div class="container-fluid mt-3" style="padding-bottom: 50px;">
         <h4 style="text-align: center; margin-top:30px;">Hidrantes:</h4>
-        <table id="tabelaHidrante" class="table table-hover table-bordered" style="border-color: #444444; margin-top:20px; margin-bottom:40px; color:#000000;" border="2">
+        <table id="tabelaHidrante" class="table table-hover table-bordered" style="overflow-x: auto; border-color: #444444; margin-top:20px; margin-bottom:40px; color:#000000;" border="2">
                 <thead>
                     <tr>
                         <th style="width: 8%; font-size:13px; color: #000000; background-color:#ff8533"><b>Sigla</b></th>
@@ -255,6 +252,7 @@ if(!$_SESSION['usuario']) {
 
     $(document).ready(function(){
         $('#tabelaHidrante').DataTable({
+                "scrollX": true,
                 "pageLength": 25,
                 "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]],
                 "language": {

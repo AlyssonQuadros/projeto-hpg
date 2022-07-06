@@ -41,8 +41,8 @@ if(!$_SESSION['usuario']) {
     <body style="background-color: #F5F5F8;">
         <h2 style="color: #eb3131f5; margin-left: 10px; padding-top:15px"><i class="fa-solid fa-clipboard-list"></i> Estoque de equipamentos</h2>
 
-        <div class="row">
-            <div class="col-5" style="margin-left: 10px; margin-top: 20px">
+        <div class="col-md-12">
+            <div style="margin-top: 20px; padding-left: 10px;">
                 <a href="../viatura/estoque-viatura.php"><button type="button" class="btn btn-danger"><i class="fa-solid fa-truck-medical"></i> Viatura</button></a>
                 <a href="../equipamento/estoque-equipamento.php"><button type="button" class="btn btn-danger"><i class="fa-solid fa-toolbox"></i> Equipamento</button></a>
                 <a href="../hidrante/estoque-hidrante.php"><button type="button" class="btn btn-danger"><i class="iconify" data-icon="mdi:fire-hydrant" style="font-size: 22px; vertical-align:top;"></i>Hidrante</button></a>
@@ -51,15 +51,19 @@ if(!$_SESSION['usuario']) {
         </div>
         <hr style="color: #ff6600;">
         <div class="row">
-            <div class="col-5">
-                <h4 style="margin-top: 10px; margin-left: 10px;"><a href="../../equipamento/cadastrar-equipamento.php"><button id="btn-addEstoque" style="font-size: 14px;" type="button" class="btn btn-sm btn-success"><b>+</b> Adicionar</button></a> Equipamentos em estoque:</h4>
+            <div class="col-md-6">
+                <div style="margin-top: 20px; padding-left: 10px;">
+                    <h4><a href="../../equipamento/cadastrar-equipamento.php"><button id="btn-addEstoque" style="font-size: 14px;" type="button" class="btn btn-sm btn-success"><b>+</b> Adicionar</button></a> Equipamentos em estoque:</h4>
+                </div>
             </div>
-            <div style="text-align:right; margin-top: 10px; padding-right:23px" class="col-7">
-            <a href="/estoque/equipamento/estoque-equipamento.php"><button id="btnTodos" type="button" class="btn btn-sm"> Todos</button></a>
-                <a href="/estoque/equipamento/em-estoque-equipamento.php"><button id="btnEstoque" type="button" class="btn btn-sm "><i class="fa-solid fa-box"></i> Em estoque</button></a>
-                <a href="/estoque/equipamento/uso-equipamento.php"><button id="btnUso" type="button" class="btn btn-sm "><i class="fa-solid fa-box-open"></i> Em uso</button></a>
-                <a href="/estoque/equipamento/manutencao-equipamento.php"><button id="btnManutencao" type="button" class="btn btn-sm "><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
-                <a href="/estoque/equipamento/exportar-equip-estoque.php"><button id="btnExportar" type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-download"></i> Exportar dados</button></a>
+            <div class="col-md-6">
+                <div style="margin-top: 20px; padding-left: 10px; text-align: right;">
+                    <a href="/estoque/equipamento/estoque-equipamento.php"><button style="padding:5px" id="btnTodos" type="button" class="btn btn-sm"> Todos</button></a>
+                    <a href="/estoque/equipamento/em-estoque-equipamento.php"><button style="padding:5px" id="btnEstoque" type="button" class="btn btn-sm "><i class="fa-solid fa-box"></i> Em estoque</button></a>
+                    <a href="/estoque/equipamento/uso-equipamento.php"><button style="padding:5px" id="btnUso" type="button" class="btn btn-sm "><i class="fa-solid fa-box-open"></i> Em uso</button></a>
+                    <a href="/estoque/equipamento/manutencao-equipamento.php"><button style="padding:5px" id="btnManutenção" type="button" class="btn btn-sm "><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
+                    <a href="/estoque/equipamento/exportar-equip-estoque.php"><button style="padding:5px" id="btnExportar" type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-download"></i> Exportar dados</button></a>
+                </div>
             </div>
             <?php
                 if(isset($_SESSION['sucesso_edit'])):
@@ -97,17 +101,17 @@ if(!$_SESSION['usuario']) {
         </div>
 
         <div class="container-fluid mt-3" style="padding-bottom: 50px;">
-            <table id="tabelaEquip" class="table table-hover table-bordered" style="border-color: #444444; margin-top:20px; margin-bottom:40px; color:#000000;" border="2">
+            <table id="tabelaEquip" class="table table-hover table-bordered" style="overflow-x: auto; border-color: #444444; margin-top:20px; margin-bottom:40px; color:#000000;" border="2">
                 <thead>
                     <tr>
-                        <th class="th-sm" style="color: #000000; width: 12%; font-size:13px; background-color:#ff8533"><b>Nº Patrimônio</b></th>
-                        <th class="th-sm" style="color: #000000; font-size:13px; background-color:#ff8533"><b>Equipamento</b></th>
+                        <th class="th-sm" style="color: #000000; width: 10%; font-size:13px; background-color:#ff8533"><b>Nº Patrimônio</b></th>
+                        <th class="th-sm" style="color: #000000; width: 30%; font-size:13px; background-color:#ff8533"><b>Equipamento</b></th>
                         <th class="th-sm" style="color: #000000; width: 10%; font-size:13px; background-color:#ff8533"><b>Condição</b></th>
                         <th class="th-sm" style="color: #000000; width: 10%; font-size:13px; background-color:#ff8533"><b>Imagem</b></th>
                         <th class="th-sm" style="color: #000000; width: 10%; font-size:13px; background-color:#ff8533"><b>Situação</b></th>
-                        <th class="th-sm" style="color: #000000; width: 8%; font-size:13px; background-color:#ff8533"><b>Usuário</b></th>
-                        <th class="th-sm" style="color: #000000; width: 8%; font-size:13px; background-color:#ff8533"><b>Data</b></th>
-                        <th class="th-sm" style="color: #000000; width: 13%; font-size:13px; text-align:center; background-color:#ff8533"><b>Ação</b></th>
+                        <th class="th-sm" style="color: #000000; width: 10%;font-size:13px; background-color:#ff8533"><b>Usuário</b></th>
+                        <th class="th-sm" style="color: #000000; width: 5%; font-size:13px; background-color:#ff8533"><b>Data</b></th>
+                        <th class="th-sm" style="color: #000000; width: 15%; font-size:13px; text-align:center; background-color:#ff8533"><b>Ação</b></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,28 +164,6 @@ if(!$_SESSION['usuario']) {
                         </td>
                     </tr>
                     <?php } ?>
-                    <script>
-                    $(document).ready(function(){
-                        $('#tabelaEquip').DataTable({
-                                "pageLength": 20,
-                                "lengthMenu": [[20, 50, 100, -1], [20, 50, 100, "Todos"]],
-                                "language": {
-                                    "lengthMenu": "Mostrando _MENU_ registros por página",
-                                    "zeroRecords": "Nada encontrado",
-                                    "info": "Mostrando página _PAGE_ de _PAGES_",
-                                    "infoEmpty": "Nenhum registro disponível",
-                                    "infoFiltered": "(filtrado de _MAX_ registros no total)",
-                                    "search": "Pesquisar",
-                                    "paginate": {
-                                        "next": "Próximo",
-                                        "previous": "Anterior",
-                                        "first": "Primeiro",
-                                        "last": "Último"
-                                    },
-                                }
-                            });
-                    });
-                    </script>
                 </tbody>
             </table>
         </div>
@@ -254,6 +236,30 @@ if(!$_SESSION['usuario']) {
                 </div>
             </div>
         </div>
+
+        <script>
+            $(document).ready(function(){
+                $('#tabelaEquip').DataTable({
+                        "scrollX": true,
+                        "pageLength": 20,
+                        "lengthMenu": [[20, 50, 100, -1], [20, 50, 100, "Todos"]],
+                        "language": {
+                            "lengthMenu": "Mostrando _MENU_ registros por página",
+                            "zeroRecords": "Nada encontrado",
+                            "info": "Mostrando página _PAGE_ de _PAGES_",
+                            "infoEmpty": "Nenhum registro disponível",
+                            "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                            "search": "Pesquisar",
+                            "paginate": {
+                                "next": "Próximo",
+                                "previous": "Anterior",
+                                "first": "Primeiro",
+                                "last": "Último"
+                            },
+                        }
+                    });
+            });
+        </script>
 
         <script>
             $('#modalMove').on('show.bs.modal', function (event) {

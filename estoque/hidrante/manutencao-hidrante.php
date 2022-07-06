@@ -35,7 +35,7 @@ if(!$_SESSION['usuario']) {
     </head>
 <?php
     $mysqli = new mysqli('localhost', 'root', '', 'bombeirospg');
-    $consulta = "SELECT * FROM hidrantes WHERE excluido = 0 AND situacao = 'Manutencao'";
+    $consulta = "SELECT * FROM hidrantes WHERE excluido = 0 AND situacao = 'Manutenção'";
     $con = $mysqli->query($consulta) or die($mysqli->error);
 ?>
     <body style="background-color: #F5F5F8;">
@@ -58,8 +58,8 @@ if(!$_SESSION['usuario']) {
                 <a href="/estoque/hidrante/estoque-hidrante.php"><button id="btnTodos" type="button" class="btn btn-sm"> Todos</button></a>
                 <a href="/estoque/hidrante/em-estoque-hidrante.php"><button id="btnEstoque" type="button" class="btn btn-sm"><i class="fa-solid fa-box"></i> Ativo</button></a>
                 <a href="/estoque/hidrante/uso-hidrante.php"><button id="btnUso" type="button" class="btn btn-sm"><i class="fa-solid fa-box-open"></i> Inoperante</button></a>
-                <a href="/estoque/hidrante/manutencao-hidrante.php"><button id="btnManutencao" type="button" class="btn btn-sm "><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
-                <a href="/estoque/hidrante/exportar-hidrante-manutencao.php"><button id="btnExportar" type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-download"></i> Exportar dados</button></a>
+                <a href="/estoque/hidrante/manutencao-hidrante.php"><button id="btnManutenção" type="button" class="btn btn-sm "><i class="fa-solid fa-screwdriver-wrench"></i> Em manutenção</button></a>
+                <a href="/estoque/hidrante/exportar-hidrante-Manutenção.php"><button id="btnExportar" type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-download"></i> Exportar dados</button></a>
             </div>
             <?php
                 if(isset($_SESSION['sucesso_edit'])):
@@ -136,7 +136,7 @@ if(!$_SESSION['usuario']) {
                                 endif;
                             ?>
                             <?php
-                                if($dado["situacao"] == 'Manutenção' || $dado["situacao"] == 'Manutencao'):
+                                if($dado["situacao"] == 'Manutenção' || $dado["situacao"] == 'Manutenção'):
                                 ?>
                                     <button type="button" class="btn btn-sm btn-warning"><?php echo $dado["situacao"]; ?></button>
                                 <?php
@@ -212,7 +212,7 @@ if(!$_SESSION['usuario']) {
                                 <select class="form-select" name="situacao" id="situacao">
                                     <option value="Ativo">Ativo</option>
                                     <option value="Inoperante">Inoperante</option>
-                                    <option value="Manutencao">Manutencao</option>
+                                    <option value="Manutenção">Manutenção</option>
                                 </select>
                             </div>
                             <div class="form-group" style="padding-top: 15px; padding-bottom: 15px;">

@@ -63,9 +63,10 @@ session_start();
         $pressao = $_POST['pressao'];
         $condicao = $_POST['condicao'];
         $acesso = $_POST['acesso'];
+        $observacao = $_POST['observacao'];
         $lat = $_POST['lat'];
         $lng = $_POST['lng'];
-        $imagem = $_FILES['imagem']['name'];
+        // $imagem = $_FILES['imagem']['name'];
 
         $sql = "UPDATE `hidrantes` SET
                 `nome` = '$nome',
@@ -76,9 +77,9 @@ session_start();
                 `pressao` = '$pressao',
                 `condicao` = '$condicao',
                 `acesso` = '$acesso',
+                `observacao` = '$observacao',
                 `lat` = '$lat',
                 `lng` = '$lng',
-                `imagem` = '$imagem',
                 `created_at` = NOW()
                 WHERE id_hidrantes = $id";
 

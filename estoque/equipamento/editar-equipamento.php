@@ -42,52 +42,57 @@ session_start();
         <h7 style="color:grey; font-size:15px"><i class="fas fa-info-circle"></i> Campos com * são obrigatórios</h7>
         <form action="edit-equip.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
             <!-- DIV PRO INPUT: Nº Patrimônio -->
-            <div class="container-sm input-group mb-3" style="margin-top: 20px;">
-                <div class="col-lg-">
-                    <span style="font-size: 15px;" class="input-group-text" id="basic-addon1">Nº Patrimônio*</span>
-                </div>
-                <div class="col-lg-3">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Nº Patrimônio*</span>
                     <input style="font-size: 15px;" type="text" class="form-control" id="patrimonio" name="patrimonio" value="<?= $data['patrimonio']?>">
                 </div>
             </div>
             <!-- DIV PROS INPUTS/SELECT: Nome / Condicao -->
-            <div class="container-sm input-group mb-3">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text" id="basic-addon1">Nome*</span>
-                </div>
-                <div class="col-lg-7">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Nome*</span>
                     <input style="font-size: 15px;" maxlength="100" type="text" class="form-control" id="nome" name="nome" value="<?= $data['nome']?>">
                 </div>
-                <div class="col-lg-1" style="margin-left: 90px;">
-                    <span style="font-size: 15px;" class="input-group-text">Condição*</span>
-                </div>
-                <select class="col-lg-2" style="font-size: 15px;" type="text" required name="condicao" id="condicao" value="<?= $data['condicao']?>">
-                    <option value="Boa">Boa</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Ruim">Ruim</option>
-                </select>
             </div>
-            <!-- DIV PRA DESCRICAO -->
-            <div class="container-sm input-group">
-                <div class="col-lg-1">
-                    <span style="font-size: 15px;" class="input-group-text">Descrição</span>
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Condição*</span>
+                    <select class="form-select" style="font-size: 15px;" type="text" required name="condicao" id="condicao">
+                        <option value="Boa" <?php echo ($data['condicao'] == 'Boa')?'selected':''; ?>>Boa</option>
+                        <option value="Regular" <?php echo ($data['condicao'] == 'Regular')?'selected':''; ?>>Regular</option>
+                        <option value="Ruim" <?php echo ($data['condicao'] == 'Ruim')?'selected':''; ?>>Ruim</option>
+                    </select>
                 </div>
-                <div class="col-lg-7">
+            </div>
+            <select hidden class="col-lg-2" style="font-size: 15px;" type="text" name="situacao" id="situacao">
+                <option value="Em estoque" selected>Em estoque</option>
+                <option value="Em uso">Em uso</option>
+                <option value="Em manutenção">Em Manutenção</option>
+            </select>
+            <!-- DIV PRA DESCRICAO -->
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <span class="input-group-text">Descrição</span>
                     <textarea style="font-size: 15px;" maxlength="200" name="descricao" id="descricao" class="form-control"><?= $data['descricao']?></textarea>
                 </div>
             </div>
             <!-- INPUT DE IMAGEM -->
-            <div class="container-sm input-group mb-3" style="margin-top: 30px;">
-                <div class="col-lg-8">
-                    <input style="font-size: 15px;" type="file" class="form-control" id="imagem" name="imagem">
+            <div class="col-10 container has-text-centered" style="margin-top: 20px;">
+                <div class="input-group">
+                    <input style="font-size: 15px;" type="file" accept=".png, .jpg, .jpeg" class="form-control" id="imagem" name="imagem" placeholder="Selecione um arquivo...">
                 </div>
             </div>
             <h7 style="color:grey; font-size:13px;"><i class="fas fa-info-circle"></i> Por favor, envie apenas arquivos com as seguintes extensões: jpg, jpeg ou png.</h7><br><br>
-            <button style="font-size: 12px;" type="submit" name="editEquip" id="editEquip" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
+            <div class="col-md-12">
+                <div style="margin-top: 20px;">
+                    <button style="font-size: 12px; margin-top:10px" type="submit" name="editEquip" id="editEquip" class="botao-tres"><i class="fas fa-save"></i> Salvar</button>
+                </div>
+            </div>
         </form>
-        <div class="row" style="margin-top: 20px;">
-            <div class="col-2" style="margin-left: 33px;">
-                <a href="/estoque/equipamento/estoque-equipamento.php"><button type="button" style="color:#F5F5F8" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
+        <div class="col-md-12">
+            <div style="margin-top: 20px;">
+                <a href="/estoque/equipamento/estoque-equipamento.php"><button type="button" style="color:#F5F5F8" class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i> Voltar</button></a>
             </div>
         </div>
     </div>

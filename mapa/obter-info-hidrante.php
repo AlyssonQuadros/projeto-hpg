@@ -28,6 +28,8 @@
         $row10 = mysqli_fetch_assoc($res10);
         $res11 = mysqli_query($mysqli, "SELECT `imagem` AS _msg FROM `hidrantes` WHERE `id_hidrantes` = $id");
         $row11 = mysqli_fetch_assoc($res11);
+        $res12 = mysqli_query($mysqli, "SELECT `observacao` AS _msg FROM `hidrantes` WHERE `id_hidrantes` = $id");
+        $row12 = mysqli_fetch_assoc($res12);
         //echo $row['_msg'];
         $lat = 0.0 + $row['_msg'];
         $lng = 0.0 + $row2['_msg'];
@@ -40,6 +42,7 @@
         $condicao = $row9['_msg'];
         $acesso = $row10['_msg'];
         $imagem = $row11['_msg'];
-        $output = "0;$lat;$lng;$nome;$endereco;$situacao;$tipo;$vazao;$pressao;$condicao;$acesso;$imagem;0";
-        echo json_encode($output);
+        $observacao = $row12['_msg'];
+        $output = "0;$lat;$lng;$nome;$endereco;$situacao;$tipo;$vazao;$pressao;$condicao;$acesso;$imagem;$observacao;0";
+        echo json_encode($output, JSON_UNESCAPED_UNICODE);
 ?>
